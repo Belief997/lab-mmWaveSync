@@ -1,0 +1,5 @@
+
+*.o
+*.d
+*.crf
+Syncher_Firmware/MDK-ARM/JLinkLog.txt

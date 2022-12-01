@@ -1,0 +1,966 @@
+Dependencies for Project 'Syncher_Firmware', Target 'Syncher_Firmware': (DO NOT MODIFY !)
+F (startup_stm32l051xx.s)(0x636225D3)(--cpu Cortex-M0+ -g --apcs=interwork -I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0--pd "__UVISION_VERSION SETA 514" --pd "_RTE_ SETA 1" --pd "STM32L051xx SETA 1"--list startup_stm32l051xx.lst --xref -o syncher_firmware\startup_stm32l051xx.o --depend syncher_firmware\startup_stm32l051xx.d)
+F (..\Core\Src\sx1276\ioe.c)(0x63452C11)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\ioe.o --omf_browse syncher_firmware\ioe.crf --depend syncher_firmware\ioe.d)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1509.h)(0x5F5A23B2)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+F (..\Core\Src\sx1276\radio.c)(0x63452BDE)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\radio.o --omf_browse syncher_firmware\radio.crf --depend syncher_firmware\radio.d)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\radio.h)(0x5FB5391C)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+F (..\Core\Src\sx1276\sx1276-Fsk.c)(0x634554BC)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276-fsk.o --omf_browse syncher_firmware\sx1276-fsk.crf --depend syncher_firmware\sx1276-fsk.d)
+I (F:\other_software\MDK514\ARM\ARMCC\include\string.h)(0x5475F300)
+I (F:\other_software\MDK514\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\radio.h)(0x5FB5391C)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+I (..\Core\Src\sx1276\sx1276-FskMisc.h)(0x5F5A267C)
+I (..\Core\Src\sx1276\sx1276-Fsk.h)(0x5F7C4F80)
+F (..\Core\Src\sx1276\sx1276-FskMisc.c)(0x634554F4)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276-fskmisc.o --omf_browse syncher_firmware\sx1276-fskmisc.crf --depend syncher_firmware\sx1276-fskmisc.d)
+I (F:\other_software\MDK514\ARM\ARMCC\include\math.h)(0x5475F2FE)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+I (..\Core\Src\sx1276\sx1276-Fsk.h)(0x5F7C4F80)
+I (..\Core\Src\sx1276\sx1276-FskMisc.h)(0x5F5A267C)
+F (..\Core\Src\sx1276\sx1276-Hal.c)(0x635F9792)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276-hal.o --omf_browse syncher_firmware\sx1276-hal.crf --depend syncher_firmware\sx1276-hal.d)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (..\Core\Src\sx1276\sx1276-LoRa.c)(0x63871CAE)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276-lora.o --omf_browse syncher_firmware\sx1276-lora.crf --depend syncher_firmware\sx1276-lora.d)
+I (F:\other_software\MDK514\ARM\ARMCC\include\string.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\radio.h)(0x5FB5391C)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+I (..\Core\Src\sx1276\sx1276-LoRaMisc.h)(0x5F60CFAD)
+I (..\Core\Src\sx1276\sx1276-LoRa.h)(0x5F5AD948)
+F (..\Core\Src\sx1276\sx1276-LoRaMisc.c)(0x53CF6632)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276-loramisc.o --omf_browse syncher_firmware\sx1276-loramisc.crf --depend syncher_firmware\sx1276-loramisc.d)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+I (..\Core\Src\sx1276\sx1276-LoRa.h)(0x5F5AD948)
+I (..\Core\Src\sx1276\sx1276-LoRaMisc.h)(0x5F60CFAD)
+F (..\Core\Src\sx1276\sx1276.c)(0x635F43EC)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\sx1276.o --omf_browse syncher_firmware\sx1276.crf --depend syncher_firmware\sx1276.d)
+I (..\Core\Src\sx1276\platform.h)(0x5F5A1CFE)
+I (..\Core\Src\sx1276\radio.h)(0x5FB5391C)
+I (..\Core\Src\sx1276\stm32f10x_type.h)(0x5F5A3856)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (..\Core\Src\sx1276\sx1276.h)(0x5F5A2523)
+I (..\Core\Src\sx1276\sx1276-Hal.h)(0x634554F4)
+I (..\Core\Src\sx1276\ioe.h)(0x5F5A31DB)
+I (..\Core\Src\sx1276\sx1276-Fsk.h)(0x5F7C4F80)
+I (..\Core\Src\sx1276\sx1276-LoRa.h)(0x5F5AD948)
+F (../Core/Src/main.c)(0x63887496)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\main.o --omf_browse syncher_firmware\main.crf --depend syncher_firmware\main.d)
+I (../Core/Inc/main.h)(0x636135EA)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\string.h)(0x5475F300)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdbool.h)(0x5475F300)
+I (../Core/Src/sx1276/radio.h)(0x5FB5391C)
+I (../Core/Src/sx1276/stm32f10x_type.h)(0x5F5A3856)
+I (../Core/Src/sx1276/platform.h)(0x5F5A1CFE)
+I (../Core/Src/sx1276/sx1276-Hal.h)(0x634554F4)
+I (../Core/Src/sx1276/ioe.h)(0x5F5A31DB)
+I (../Core/Src/sx1276/sx1276-Fsk.h)(0x5F7C4F80)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdio.h)(0x5475F300)
+F (../Core/Src/stm32l0xx_it.c)(0x636133B5)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_it.o --omf_browse syncher_firmware\stm32l0xx_it.crf --depend syncher_firmware\stm32l0xx_it.d)
+I (../Core/Inc/main.h)(0x636135EA)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_it.h)(0x636133B5)
+F (../Core/Src/stm32l0xx_hal_msp.c)(0x636133B5)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_msp.o --omf_browse syncher_firmware\stm32l0xx_hal_msp.crf --depend syncher_firmware\stm32l0xx_hal_msp.d)
+I (../Core/Inc/main.h)(0x636135EA)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Core/Src/stm32l0xx_hal_timebase_tim.c)(0x6342CD91)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_timebase_tim.o --omf_browse syncher_firmware\stm32l0xx_hal_timebase_tim.crf --depend syncher_firmware\stm32l0xx_hal_timebase_tim.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_spi.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_spi.o --omf_browse syncher_firmware\stm32l0xx_hal_spi.crf --depend syncher_firmware\stm32l0xx_hal_spi.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal.o --omf_browse syncher_firmware\stm32l0xx_hal.crf --depend syncher_firmware\stm32l0xx_hal.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_i2c.o --omf_browse syncher_firmware\stm32l0xx_hal_i2c.crf --depend syncher_firmware\stm32l0xx_hal_i2c.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_i2c_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_i2c_ex.crf --depend syncher_firmware\stm32l0xx_hal_i2c_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_rcc.o --omf_browse syncher_firmware\stm32l0xx_hal_rcc.crf --depend syncher_firmware\stm32l0xx_hal_rcc.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_rcc_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_rcc_ex.crf --depend syncher_firmware\stm32l0xx_hal_rcc_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_flash_ramfunc.o --omf_browse syncher_firmware\stm32l0xx_hal_flash_ramfunc.crf --depend syncher_firmware\stm32l0xx_hal_flash_ramfunc.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_flash.o --omf_browse syncher_firmware\stm32l0xx_hal_flash.crf --depend syncher_firmware\stm32l0xx_hal_flash.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_flash_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_flash_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_flash_ex.crf --depend syncher_firmware\stm32l0xx_hal_flash_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_gpio.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_gpio.o --omf_browse syncher_firmware\stm32l0xx_hal_gpio.crf --depend syncher_firmware\stm32l0xx_hal_gpio.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_dma.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_dma.o --omf_browse syncher_firmware\stm32l0xx_hal_dma.crf --depend syncher_firmware\stm32l0xx_hal_dma.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_pwr.o --omf_browse syncher_firmware\stm32l0xx_hal_pwr.crf --depend syncher_firmware\stm32l0xx_hal_pwr.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_pwr_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_pwr_ex.crf --depend syncher_firmware\stm32l0xx_hal_pwr_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_cortex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_cortex.o --omf_browse syncher_firmware\stm32l0xx_hal_cortex.crf --depend syncher_firmware\stm32l0xx_hal_cortex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_exti.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_exti.o --omf_browse syncher_firmware\stm32l0xx_hal_exti.crf --depend syncher_firmware\stm32l0xx_hal_exti.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_tim.o --omf_browse syncher_firmware\stm32l0xx_hal_tim.crf --depend syncher_firmware\stm32l0xx_hal_tim.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_tim_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_tim_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_tim_ex.crf --depend syncher_firmware\stm32l0xx_hal_tim_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_uart.o --omf_browse syncher_firmware\stm32l0xx_hal_uart.crf --depend syncher_firmware\stm32l0xx_hal_uart.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_uart_ex.c)(0x634E143C)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\stm32l0xx_hal_uart_ex.o --omf_browse syncher_firmware\stm32l0xx_hal_uart_ex.crf --depend syncher_firmware\stm32l0xx_hal_uart_ex.d)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
+F (../Core/Src/system_stm32l0xx.c)(0x6342CD86)(--c99 -c --cpu Cortex-M0+ -g -O0 --apcs=interwork --split_sections -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -I../Core/Src/sx1276-I "F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Firmware\Syncher_Firmware\MDK-ARM\RTE"-I F:\other_software\MDK514\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I F:\other_software\MDK514\ARM\PACK\Keil\STM32L0xx_DFP\2.1.0-D__UVISION_VERSION="514" -D_RTE_ -DSTM32L051xx -DUSE_HAL_DRIVER -DSTM32L051xx -DUSE_SX1276_RADIO-o syncher_firmware\system_stm32l0xx.o --omf_browse syncher_firmware\system_stm32l0xx.crf --depend syncher_firmware\system_stm32l0xx.d)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l051xx.h)(0x634E143C)
+I (../Drivers/CMSIS/Include/core_cm0plus.h)(0x634E1416)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stdint.h)(0x5475F300)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x634E1416)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x634E1416)
+I (../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x634E143C)
+I (../Core/Inc/stm32l0xx_hal_conf.h)(0x636225D0)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x634E143C)
+I (F:\other_software\MDK514\ARM\ARMCC\include\stddef.h)(0x5475F300)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_exti.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_dma.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_cortex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_spi.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x634E143C)
+I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x634E143C)
