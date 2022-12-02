@@ -98,7 +98,7 @@ extern SPI_HandleTypeDef hspi1;
 //void reset_led(void){
 //	GPIO_WriteBit( LED_IOPORT, LED_PIN, Bit_RESET );
 //}
-uint8_t SpiInOut( uint8_t outData )
+static uint8_t SpiInOut( uint8_t outData )
 {
     /* Send SPIy data */
 	uint8_t rx_data;
@@ -196,30 +196,30 @@ void SX1276ReadFifo( uint8_t *buffer, uint8_t size )
     SX1276ReadBuffer( 0, buffer, size );
 }
 
-inline uint8_t SX1276ReadDio0( void )
-{
-    return GPIO_ReadInputDataBit( DIO0_IOPORT, DIO0_PIN );
-}
+//inline uint8_t SX1276ReadDio0( void )
+//{
+//    return GPIO_ReadInputDataBit( DIO0_IOPORT, DIO0_PIN );
+//}
 
-inline uint8_t SX1276ReadDio1( void )
-{
-    return GPIO_ReadInputDataBit( DIO1_IOPORT, DIO1_PIN );
-}
+//inline uint8_t SX1276ReadDio1( void )
+//{
+//    return GPIO_ReadInputDataBit( DIO1_IOPORT, DIO1_PIN );
+//}
 
 inline uint8_t SX1276ReadDio2( void )
 {
     return GPIO_ReadInputDataBit( DIO2_IOPORT, DIO2_PIN );
 }
 
-inline uint8_t SX1276ReadDio3( void )
-{
-    return GPIO_ReadInputDataBit( DIO3_IOPORT, DIO3_PIN );
-}
+//inline uint8_t SX1276ReadDio3( void )
+//{
+//    return GPIO_ReadInputDataBit( DIO3_IOPORT, DIO3_PIN );
+//}
 
-inline uint8_t SX1276ReadDio4( void )
-{
-    return GPIO_ReadInputDataBit( DIO4_IOPORT, DIO4_PIN );
-}
+//inline uint8_t SX1276ReadDio4( void )
+//{
+//    return GPIO_ReadInputDataBit( DIO4_IOPORT, DIO4_PIN );
+//}
 
 inline uint8_t SX1276ReadDio5( void )
 {

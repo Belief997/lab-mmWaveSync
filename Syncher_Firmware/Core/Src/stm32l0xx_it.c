@@ -60,6 +60,7 @@ extern TIM_HandleTypeDef htim22;
 extern TIM_HandleTypeDef htim21;
 
 /* USER CODE BEGIN EV */
+__IO uint32_t g_u32SystickCount=0;
 
 /* USER CODE END EV */
 
@@ -128,7 +129,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-
+    g_u32SystickCount++;
   /* USER CODE END SysTick_IRQn 0 */
 
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -202,5 +203,8 @@ void TIM22_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+uint32_t GetTick(void){
+	return g_u32SystickCount;
+}
 
 /* USER CODE END 1 */

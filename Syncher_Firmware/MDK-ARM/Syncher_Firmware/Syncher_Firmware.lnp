@@ -32,6 +32,8 @@
 "syncher_firmware\stm32l0xx_hal_uart.o"
 "syncher_firmware\stm32l0xx_hal_uart_ex.o"
 "syncher_firmware\system_stm32l0xx.o"
+"syncher_firmware\sx127x_hal.o"
+"syncher_firmware\sx127x_driver.o"
 --strict --scatter "Syncher_Firmware\Syncher_Firmware.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -26,8 +26,10 @@
 #include <stdbool.h>
 #include "radio.h"
 #include "platform.h"
-#include "sx1276-Hal.h"
-#include "sx1276-Fsk.h"
+#include "sx127x_driver.h"
+
+//#include "sx1276-Hal.h"
+//#include "sx1276-Fsk.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -206,7 +208,7 @@ int Key_handle(uint32_t key)
         txBuf1[1] = 'r';
         txBuf1[2] = 'i';
         txBuf1[3] = 'g';
-        Radio->SetTxPacket(txBuf1, 4);
+//        Radio->SetTxPacket(txBuf1, 4);
 //      delay_0();
         pulse_max = 32;
         htim22.Init.Prescaler = Prescal_list[prelist_cnt];
@@ -222,7 +224,7 @@ int Key_handle(uint32_t key)
         txBuf1[1] = prelist_cnt;
         txBuf1[2] = pulse_max;
         txBuf1[3] = 0x7A;
-        Radio->SetTxPacket(txBuf1, 4);
+//        Radio->SetTxPacket(txBuf1, 4);
         
         //·¢ÉäÅäÖÃÖ¡
         pulse_max = 32;
@@ -237,7 +239,7 @@ int Key_handle(uint32_t key)
         txBuf1[1] = prelist_cnt;
         txBuf1[2] = pulse_max;
         txBuf1[3] = 0x7A;
-        Radio->SetTxPacket(txBuf1, 4);
+//        Radio->SetTxPacket(txBuf1, 4);
         
         //·¢ÉäÅäÖÃÖ¡
         pulse_max = 32;
@@ -278,51 +280,6 @@ int Key_timer_cb(void)
     return 0;
 }
 
-
-
-
-void testMaster(void){
-//	while(1){
-//		if(uwTick-TxTimer>=1000){
-//			TxTimer = uwTick;
-//			Radio->SetTxPacket( txBuf1, SENSOR_BYTE-1 );
-//			toggle_led();
-//		}
-//	}
-	uint8_t rf_state = Radio->Process();
-//	static int master_state = TAG_READY;
-//	static uint32_t time_now;
-//	switch (master_state)
-//    {
-//    case M_READY:
-//      /* code */
-//      //memset(start_buf, 0, BUFFER_SIZE);
-//      master_state = M_START;
-//	  //åˆšåˆ°ï¼Œä¸éœ?è¦ç­‰
-//      break;
-
-//    case M_START: //å‘é?åŒæ­¥å¸§
-//		//sprintf(txBuf1, "T%d", TIME_WAIT);//(uwTick / 1000)%TIME_WAIT
-//		//printf("start_buf : %s\r\n", start_buf);  //usart
-//		//sprintf(txBuf1, "T%d", 1);//(uwTick / 1000)%TIME_WAIT
-//		txBuf1[0] = 'T';
-//		txBuf1[1] = TIME_WAIT-1; //number of slot of a circle
-//		txBuf1[2] = slot_time_100ms; //one slot time = slot_time_100ms*100ms
-//		txBuf1[3] = '\r';
-//		txBuf1[4] = '\n';
-//		Radio->SetTxPacket(txBuf1, strlen(txBuf1));
-//		master_state = M_SENDDING;
-//		time_now = uwTick;
-//			
-//      break;
-//	case M_SENDDING:
-//		if(rf_state==RF_TX_DONE){
-//			master_state = M_RECEIVE;
-//			Radio->StartRx();
-//		}
-//		break;	
-//	}
-}
 
 void OnSlave( void )
 {
@@ -388,7 +345,7 @@ void OnMaster( void )
 //		txBuf1[2] = slot_time_100ms; //one slot time = slot_time_100ms*100ms
 //		txBuf1[3] = '\r';
 //		txBuf1[4] = '\n';
-		Radio->SetTxPacket(txBuf1, strlen(txBuf1));
+//		Radio->SetTxPacket(txBuf1, strlen(txBuf1));
 		master_state = M_SENDDING;
 		time_now = uwTick;
 			
@@ -396,7 +353,7 @@ void OnMaster( void )
 	case M_SENDDING:
 		if(rf_state==RF_TX_DONE){
 			master_state = M_RECEIVE;
-			Radio->StartRx();
+//			Radio->StartRx();
 		}
         else
         {
@@ -434,6 +391,25 @@ void OnMaster( void )
       break;
     }
 }
+
+void delayMsBySystick(uint32_t timeoutMs){
+	uint32_t systickBak,currTick;
+	systickBak = GetTick();
+	while(1){
+		currTick=GetTick();
+		if(currTick>=systickBak){
+			if(currTick-systickBak>timeoutMs){
+				return;
+			}
+		}else{
+			//currTickï¿½ï¿½ï¿½ï¿½ï¿½
+			if(currTick+(~systickBak)>timeoutMs){
+				return;
+			}
+		}
+	}
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -470,16 +446,18 @@ int main(void)
   MX_TIM22_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-	HAL_UART_Transmit(&huart1, (uint8_t *)txBuf1, strlen(txBuf1), 0xffff);
+//	HAL_UART_Transmit(&huart1, (uint8_t *)txBuf1, strlen(txBuf1), 0xffff);
 	//	HAL_UART_Transmit(&huart2, (uint8_t *)txBuf2, strlen(txBuf2), 0xffff);
-	HAL_UART_Receive_IT(&huart1, (uint8_t *)rxBuf1, SENSOR_BYTE);
+//	HAL_UART_Receive_IT(&huart1, (uint8_t *)rxBuf1, SENSOR_BYTE);
 	//	HAL_UART_Receive_IT(&huart2, (uint8_t *)rxBuf2, 10);
 
-	Radio = RadioDriverInit( );
-	Radio->Init( );
-	Radio->StartRx( );
+    // radio init
+    tLoRaSettings setting={435000000,20,7,12,1,0x0005};  //Æµï¿½ï¿½435Mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20dbmï¿½ï¿½ï¿½ï¿½ï¿½ï¿½125kHzï¿½ï¿½SF=12ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4/5,Ç°ï¿½ï¿½ï¿½ë³¤ï¿½ï¿½0x0005
+    g_Radio.Init(&setting);  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   
 	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin, GPIO_PIN_RESET);
-	
+
+    // M/S mode confirm
 	if(GPIO_PIN_SET == HAL_GPIO_ReadPin(MS_IOPORT, MS_PIN)){
 		op_mode = 1; //master
 	}else{
@@ -499,17 +477,42 @@ int main(void)
     {
         HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_RESET);
     }
-  while (1)
-  {
+    
+    while (1)
+    {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	if(op_mode)
-        OnMaster(); //Schedule the nodes to collect messages
-	else
-		OnSlave();
-    /* USER CODE BEGIN 3 */
-  }
+    	if(op_mode)
+    	{
+			if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½1000Ms
+				printf("send ok\r\n");
+			}else{
+				printf("send timeout\r\n");
+			}
+			delayMsBySystick(1000);
+    	}
+		else	
+		{
+    	    uint8_t u8_ret,rxBuf[128]={0},rxCount=128;
+			rxCount=255;
+			memset(rxBuf,0,255);
+			printf("start rx\r\n");
+			u8_ret=sx127xRx(rxBuf,&rxCount,2000);	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½rxBufï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½rxCountï¿½æ´¢ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±1000Ms
+			switch(u8_ret){
+				case 0:
+					printf("rx done\r\n  len:%d\r\n  playload:%s\r\n",rxCount,rxBuf);
+					break;
+				case 1:
+				case 2:
+					printf("rx timeout ret:%d\r\n",u8_ret);
+					break;
+				default:
+					printf("unknow ret:%d\r\n",u8_ret);
+					break;
+			}
+		}
+    }
   /* USER CODE END 3 */
 }
 

@@ -32,7 +32,10 @@
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef unsigned short u16;
 
+	 
+	 
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -56,6 +59,7 @@ void TIM2_IRQHandler(void);
 void TIM21_IRQHandler(void);
 void TIM22_IRQHandler(void);
 /* USER CODE BEGIN EFP */
+uint32_t GetTick(void);
 
 /* USER CODE END EFP */
 
