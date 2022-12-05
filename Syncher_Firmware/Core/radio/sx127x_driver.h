@@ -34,9 +34,9 @@ typedef enum
     RF_TX_DONE,	//发送完成
     RF_TX_TIMEOUT,	//发送超时
     RF_CAD_DETECTED,	//CAD检测到前导码
-		RF_CAD_EMPTY,	//CAD检测完成，没有检测到前导码
-		RF_CAD_TIMEOUT,	//CAD超时
-		RF_UNKNOW_STATUS	//异常状态机
+    RF_CAD_EMPTY,	//CAD检测完成，没有检测到前导码
+    RF_CAD_TIMEOUT,	//CAD超时
+    RF_UNKNOW_STATUS	//异常状态机
 }tRFProcessReturnCodes;
 
 //硬件工作模式

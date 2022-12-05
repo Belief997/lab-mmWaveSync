@@ -1,13 +1,6 @@
 --cpu Cortex-M0+
 "syncher_firmware\startup_stm32l051xx.o"
 "syncher_firmware\ioe.o"
-"syncher_firmware\radio.o"
-"syncher_firmware\sx1276-fsk.o"
-"syncher_firmware\sx1276-fskmisc.o"
-"syncher_firmware\sx1276-hal.o"
-"syncher_firmware\sx1276-lora.o"
-"syncher_firmware\sx1276-loramisc.o"
-"syncher_firmware\sx1276.o"
 "syncher_firmware\main.o"
 "syncher_firmware\stm32l0xx_it.o"
 "syncher_firmware\stm32l0xx_hal_msp.o"

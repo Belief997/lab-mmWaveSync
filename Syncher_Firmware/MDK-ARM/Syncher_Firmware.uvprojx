@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32L051xx,USE_SX1276_RADIO</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32L0xx_HAL_Driver/Inc;../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32L0xx/Include;../Drivers/CMSIS/Include;../Core/Src/sx1276</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32L0xx_HAL_Driver/Inc;../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32L0xx/Include;../Drivers/CMSIS/Include;..\Core\HAL;..\Core\radio</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -422,41 +422,6 @@
               <FileName>ioe.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\sx1276\ioe.c</FilePath>
-            </File>
-            <File>
-              <FileName>radio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\radio.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276-Fsk.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276-Fsk.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276-FskMisc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276-FskMisc.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276-Hal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276-Hal.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276-LoRa.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276-LoRa.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276-LoRaMisc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276-LoRaMisc.c</FilePath>
-            </File>
-            <File>
-              <FileName>sx1276.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\sx1276\sx1276.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -592,6 +557,26 @@
               <FileName>system_stm32l0xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/system_stm32l0xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>HAL</GroupName>
+          <Files>
+            <File>
+              <FileName>SX127x_hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\HAL\SX127x_hal.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Radio</GroupName>
+          <Files>
+            <File>
+              <FileName>sx127x_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\radio\sx127x_driver.c</FilePath>
             </File>
           </Files>
         </Group>
