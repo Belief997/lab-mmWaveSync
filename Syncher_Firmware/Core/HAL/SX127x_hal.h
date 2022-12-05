@@ -16,7 +16,9 @@
 
 #include "stdio.h"
 
-#define DEBUG( format , ... )	printf( format , ##__VA_ARGS__ )	//打印log信息的函数，可以不设置
+//#define DEBUG( format , ... )	printf( format , ##__VA_ARGS__ )	//打印log信息的函数，可以不设置
+#define DEBUG( format , ... )	{}	//打印log信息的函数，可以不设置
+
 #define GET_TICK_COUNT() GetTick()	//获取systick的函数
 
 void Soft_delay_ms(uint16_t time);

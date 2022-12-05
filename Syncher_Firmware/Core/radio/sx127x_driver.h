@@ -63,7 +63,6 @@ typedef struct sRadioDriver
     tRFProcessReturnCodes ( *Process )( void );
 }tRadioDriver;
 
-extern tRadioDriver g_Radio;
 
 void sx127xInit(tLoRaSettings *stting);
 void Sx127xRestart(void);

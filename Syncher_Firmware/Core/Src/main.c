@@ -71,6 +71,10 @@ const uint8_t PongMsg[] = "5678";
 uint8_t tx_cmd = 0; 
 //uint8_t LORA = 0;
 volatile uint32_t TxTimer;
+
+
+extern tRadioDriver g_Radio;
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -209,6 +213,17 @@ int Key_handle(uint32_t key)
         txBuf1[1] = 'r';
         txBuf1[2] = 'i';
         txBuf1[3] = 'g';
+
+        {
+            u16 i=0;
+        if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//�������ݣ������ʱʱ��1000Ms
+                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+        //				DEBUG("send ok\r\n");
+        	}else{
+        	    i = 2;
+        //				DEBUG("send timeout\r\n");
+        	}
+        } 
 //        Radio->SetTxPacket(txBuf1, 4);
 //      delay_0();
         pulse_max = 32;
@@ -454,6 +469,7 @@ int main(void)
 
     // radio init
     tLoRaSettings setting={435000000,20,7,12,1,0x0005};  //Ƶ��435M������20dbm������125kHz��SF=12�����������4/5,ǰ���볤��0x0005
+//    sx127xInit(&setting);
     g_Radio.Init(&setting);  //��ʼ������
    
 	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin, GPIO_PIN_RESET);
@@ -478,38 +494,47 @@ int main(void)
     {
         HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_RESET);
     }
-    
+
+    uint8_t u8_ret,rxBuf[128]={0},rxCount=255;
     while (1)
     {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+        u16 i= 0;
     	if(op_mode)
     	{
-			if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//�������ݣ������ʱʱ��1000Ms
-				printf("send ok\r\n");
-			}else{
-				printf("send timeout\r\n");
-			}
-			delayMsBySystick(1000);
+            
+//			if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//�������ݣ������ʱʱ��1000Ms
+//                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//                i = 1;
+////				DEBUG("send ok\r\n");
+//			}else{
+//			    i = 2;
+////				DEBUG("send timeout\r\n");
+//			}
+////			delayMsBySystick(1000);
     	}
 		else	
 		{
-    	    uint8_t u8_ret,rxBuf[128]={0},rxCount=128;
-			rxCount=255;
+			rxCount = 255;
 			memset(rxBuf,0,255);
-			printf("start rx\r\n");
-			u8_ret=sx127xRx(rxBuf,&rxCount,2000);	//�������ݣ�rxBuf�洢�������ݣ�rxCount�洢���յ������ݳ��ȣ������ʱ1000Ms
+//			DEBUG("start rx\r\n");
+			u8_ret = sx127xRx(rxBuf,&rxCount,2000);	//�������ݣ�rxBuf�洢�������ݣ�rxCount�洢���յ������ݳ��ȣ������ʱ1000Ms
 			switch(u8_ret){
 				case 0:
-					printf("rx done\r\n  len:%d\r\n  playload:%s\r\n",rxCount,rxBuf);
+                    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+                    i = 1;
+//					DEBUG("rx done\r\n  len:%d\r\n  playload:%s\r\n",rxCount,rxBuf);
 					break;
 				case 1:
 				case 2:
-					printf("rx timeout ret:%d\r\n",u8_ret);
+                    i = 2;
+//					DEBUG("rx timeout ret:%d\r\n",u8_ret);
 					break;
 				default:
-					printf("unknow ret:%d\r\n",u8_ret);
+                    i = 3;
+//					DEBUG("unknow ret:%d\r\n",u8_ret);
 					break;
 			}
 		}
