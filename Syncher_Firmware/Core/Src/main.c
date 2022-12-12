@@ -24,17 +24,21 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
-//#include "radio.h"
-//#include "platform.h"
 #include "sx127x_driver.h"
 #include "stm32l0xx_it.h"
-
-//#include "sx1276-Hal.h"
-//#include "sx1276-Fsk.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
 #define BUFFER_SIZE                                 20 // Define the payload size here
 #define MAX_USER                                    5  
 #define TIME_GAP                                    1000 //ms
@@ -48,42 +52,6 @@
 #define REPORT_CIRCLE                               10000
 
 
-#define BTN1_IOPORT									GPIOB
-#define BTN1_PIN									GPIO_PIN_13
-#define BTN2_IOPORT									GPIOB
-#define BTN2_PIN									GPIO_PIN_14
-#define BTN3_IOPORT									GPIOB
-#define BTN3_PIN									GPIO_PIN_15
-
-#define MS_IOPORT 				  					GPIOA
-#define MS_PIN										GPIO_PIN_11
-
-extern __IO uint32_t uwTick;
-uint8_t pulse_cnt = 0;
-uint8_t pulse_max = 8;
-
-extern volatile uint32_t uwTick;
-static uint16_t BufferSize = BUFFER_SIZE;			// RF buffer size
-//static uint8_t Buffer[BUFFER_SIZE];					// RF buffer
-tRadioDriver *Radio = NULL;
-const uint8_t PingMsg[] = "1234";
-const uint8_t PongMsg[] = "5678";
-uint8_t tx_cmd = 0; 
-//uint8_t LORA = 0;
-volatile uint32_t TxTimer;
-
-
-extern tRadioDriver g_Radio;
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -101,6 +69,49 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+enum cap_state{
+    CAPTURE_FALLING = 0,
+    CAPTURE_RISING,
+    CAPTURE_IDLE,
+	CAPTURE_READY,
+	CAPTURE_FIRSTCAP,
+	CAPTURE_FINISHED
+} ;
+
+enum tag_state{
+    TAG_READY = 0,
+    TAG_RECEIVE,
+    TAG_START,
+    TAG_SENDDING
+};
+
+enum master_state{
+    M_READY=0,
+    M_START,
+    M_RECEIVE,
+    M_SENDDING
+};
+
+extern __IO uint32_t uwTick;
+uint8_t pulse_cnt = 0;
+uint8_t pulse_max = 8;
+
+extern volatile uint32_t uwTick;
+static uint16_t BufferSize = BUFFER_SIZE;			// RF buffer size
+//static uint8_t Buffer[BUFFER_SIZE];					// RF buffer
+tRadioDriver *Radio = NULL;
+
+volatile uint8_t flag;//Êý¾Ý½áÊøµÄ±êÖ¾Î»£¬½áÊøÊ±tag=1
+
+#define LEN_RXBUF 128
+u8 txBuf1[20];  //9.30
+u8 rxBuf[LEN_RXBUF];
+
+uint16_t Prescal_list[] = {500,1000,2000,5000,10000};
+
+
+extern tRadioDriver g_Radio;
+
 
 /* USER CODE END PV */
 
@@ -113,48 +124,13 @@ static void MX_USART2_UART_Init(void);
 static void MX_TIM22_Init(void);
 static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
+int Key_timer_cb(void);
+
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-enum cap_state{
-    CAPTURE_FALLING = 0,
-    CAPTURE_RISING,
-    CAPTURE_IDLE,
-	CAPTURE_READY,
-	CAPTURE_FIRSTCAP,
-	CAPTURE_FINISHED
-} ;
-
-enum tag_state{
-  TAG_READY = 0,
-  TAG_RECEIVE,
-  TAG_START,
-  TAG_SENDDING
-};
-
-enum master_state{
-  M_READY=0,
-  M_START,
-  M_RECEIVE,
-	M_SENDDING
-};
-volatile uint8_t capture_state = CAPTURE_IDLE;//±íÊ¾µ±Ç°²¶»ñµÄÎª¸ß/µÍµçÆ½
-volatile uint16_t capture_val_up;//ÉÏÉýÑØÊ±¼ÆÊýÆ÷µÄÖµ
-volatile uint16_t capture_val_down;//ÏÂ½µÑØÊ±¼ÆÊýÆ÷µÄÖµ
-volatile uint8_t flag;//Êý¾Ý½áÊøµÄ±êÖ¾Î»£¬½áÊøÊ±tag=1
-
-#define LEN_RXBUF 128
-u8 txBuf1[20];  //9.30
-u8 rxBuf[LEN_RXBUF];
-
-char rcv_flag1 = 0;
-char rcv_flag2 = 0;
-char read_over = 0;
-uint32_t Sensor_ID = 0;
-
 
 //void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 //{
@@ -175,7 +151,6 @@ void delay_0(void){
 	u32 j=0;
 	for(i=0;i<1000;i++){
 		for(j=0;j<1000;j++){
-		
 		}
 	}
 }
@@ -193,11 +168,48 @@ void tri_mmwave(){
 		i = i+1;}
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1,GPIO_PIN_RESET);
 }
-uint16_t Prescal_list[] = {500,1000,2000,5000,10000};
 
+// å®šæ—¶å™¨ä¸­æ–­å…¥å£
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+	int i = 0;
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM21) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+	if (htim->Instance == TIM22) {
+		if(pulse_cnt < pulse_max)
+        {
+//            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_SET);	   
+//            GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
+//            GPIOx->BSRR = Pulse_Pin;
 
+			while(i<1){ //delay 
+				i = i+1;}
+			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
+//            GPIOx->BRR = Pulse_Pin ;
 
+			pulse_cnt++;
+//			HAL_TIM_Base_Start_IT(&htim22);
+		}
+        else
+        {
+			pulse_cnt = 0;
+			HAL_TIM_Base_Stop_IT(&htim22);
+            HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_SET);
+		}
+	}
+    else if(htim->Instance == TIM2)
+    {
+        Key_timer_cb();
+    }
+  /* USER CODE END Callback 1 */
+}
 
+// æŒ‰é”® IO è¾¹æ²¿è§¦å‘ä¸­æ–­ï¼Œé‡ç½®å®šæ—¶å™¨å»¶è¿ŸèŽ·å–æŒ‰é”®çŠ¶æ€
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     HAL_TIM_Base_Stop_IT(&htim2);
@@ -205,13 +217,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 
+// å¯¹æŒ‰ä¸‹çš„æŒ‰é”®æ‰§è¡Œå“åº”åŠ¨ä½œ
 int Key_handle(uint32_t key)
 {
     static uint8_t prelist_cnt = 0;
     delay_0();
-    if(key == BTN1_PIN){
-        //·¢Éä´¥·¢Ö¡
-        //Ê±ÑÓ
+    if(key == BTN1_Pin){
         txBuf1[0] = 't';
         txBuf1[1] = 'r';
         txBuf1[2] = 'i';
@@ -237,7 +248,7 @@ int Key_handle(uint32_t key)
         HAL_TIM_Base_Start_IT(&htim22);
     }
     
-    if(key == BTN2_PIN){
+    if(key == BTN2_Pin){
         prelist_cnt++;
         prelist_cnt %= sizeof(Prescal_list);
         txBuf1[0] = 'c';
@@ -251,7 +262,7 @@ int Key_handle(uint32_t key)
         htim22.Init.Prescaler = Prescal_list[prelist_cnt];
     }
         
-    if(key == BTN3_PIN){
+    if(key == BTN3_Pin){
         pulse_max = 32;
         prelist_cnt--;
         prelist_cnt %= sizeof(Prescal_list);
@@ -274,7 +285,8 @@ int Key_handle(uint32_t key)
 int Key_timer_cb(void)
 {  
     HAL_TIM_Base_Stop_IT(&htim2);
-    if(0 == HAL_GPIO_ReadPin(BTN1_IOPORT, BTN1_Pin))
+    // ä¾æ¬¡åˆ¤æ–­å“ªä¸ªæŒ‰é”®æŒ‰ä¸‹äº†
+    if(0 == HAL_GPIO_ReadPin(BTN1_GPIO_Port, BTN1_Pin))
     {
 
 //        HAL_GPIO_TogglePin(LED_KEY_GPIO_Port, LED_KEY_Pin);
@@ -283,14 +295,14 @@ int Key_timer_cb(void)
         Key_handle(BTN1_Pin);
 
     }
-    else if(0 == HAL_GPIO_ReadPin(BTN2_IOPORT, BTN2_Pin))
+    else if(0 == HAL_GPIO_ReadPin(BTN2_GPIO_Port, BTN2_Pin))
     {
 
         HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
         Key_handle(BTN2_Pin);
 
     }
-    else if(0 == HAL_GPIO_ReadPin(BTN3_IOPORT, BTN3_Pin))
+    else if(0 == HAL_GPIO_ReadPin(BTN3_GPIO_Port, BTN3_Pin))
     {
 
         HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
@@ -479,7 +491,7 @@ int main(void)
 	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin, GPIO_PIN_RESET);
 
     // M/S mode confirm
-	if(GPIO_PIN_SET == HAL_GPIO_ReadPin(MS_IOPORT, MS_PIN)){
+	if(GPIO_PIN_SET == HAL_GPIO_ReadPin(MS_Select_GPIO_Port, MS_Select_Pin)){
 		op_mode = 1; //master
 	}else{
 		op_mode = 0; //slave
@@ -499,7 +511,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    u8 u8_ret, rxCount=255;
+    u8 ret, rxCount=255;
     while (1)
     {
     /* USER CODE END WHILE */
@@ -507,8 +519,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		rxCount = 255;
 //		memset(rxBuf,0,LEN_RXBUF);
-		u8_ret = sx127xRx(rxBuf,&rxCount,2000);	
-		switch(u8_ret){
+		ret = sx127xRx(rxBuf,&rxCount,2000);	
+		switch(ret){
 			case 0:
                 if(rxBuf[0]=='t'){
         			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
@@ -872,53 +884,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM21 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-	int i = 0;
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM21) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-	if (htim->Instance == TIM22) {
-		if(pulse_cnt < pulse_max)
-        {
-//            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_SET);	   
-//            GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
-//            GPIOx->BSRR = Pulse_Pin;
-
-			while(i<1){ //delay 
-				i = i+1;}
-			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
-//            GPIOx->BRR = Pulse_Pin ;
-
-			pulse_cnt++;
-//			HAL_TIM_Base_Start_IT(&htim22);
-		}
-        else
-        {
-			pulse_cnt = 0;
-			HAL_TIM_Base_Stop_IT(&htim22);
-            HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_SET);
-		}
-	}
-    else if(htim->Instance == TIM2)
-    {
-        Key_timer_cb();
-    }
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

@@ -27,13 +27,13 @@ Project File Date:  12/05/2022
 <h2>Output:</h2>
 Build target 'Syncher_Firmware'
 compiling main.c...
-../Core/Src/main.c(221): warning:  #550-D: variable "i" was set but never used
+../Core/Src/main.c(232): warning:  #550-D: variable "i" was set but never used
               u16 i=0;
-../Core/Src/main.c(397): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
+../Core/Src/main.c(409): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
                                 HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf, strlen(rxBuf), 0xffff);//Usart send to server
 ../Core/Src/main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=14304 RO-data=284 RW-data=148 ZI-data=2324  
+Program Size: Code=14304 RO-data=272 RW-data=128 ZI-data=2328  
 FromELF: creating hex file...
 "Syncher_Firmware\Syncher_Firmware.axf" - 0 Error(s), 2 Warning(s).
 
