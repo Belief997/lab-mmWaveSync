@@ -24,14 +24,17 @@ static void SX1278WriteBuffer(uint8_t addr,uint8_t *buffer,uint8_t size);
 static uint8_t u8_SFList[]={RFLR_MODEMCONFIG2_SF_6,RFLR_MODEMCONFIG2_SF_7,RFLR_MODEMCONFIG2_SF_8,RFLR_MODEMCONFIG2_SF_9,RFLR_MODEMCONFIG2_SF_10,RFLR_MODEMCONFIG2_SF_11,RFLR_MODEMCONFIG2_SF_12}; 
 static uint8_t u8_CRList[]={RFLR_MODEMCONFIG1_CODINGRATE_4_5,RFLR_MODEMCONFIG1_CODINGRATE_4_6,RFLR_MODEMCONFIG1_CODINGRATE_4_7,RFLR_MODEMCONFIG1_CODINGRATE_4_8};
 static uint8_t u8_BWList[]={RFLR_MODEMCONFIG1_BW_7_81_KHZ,RFLR_MODEMCONFIG1_BW_10_41_KHZ,RFLR_MODEMCONFIG1_BW_15_62_KHZ,RFLR_MODEMCONFIG1_BW_20_83_KHZ,RFLR_MODEMCONFIG1_BW_31_25_KHZ,RFLR_MODEMCONFIG1_BW_41_66_KHZ,RFLR_MODEMCONFIG1_BW_62_50_KHZ,RFLR_MODEMCONFIG1_BW_125_KHZ,RFLR_MODEMCONFIG1_BW_250_KHZ,RFLR_MODEMCONFIG1_BW_500_KHZ};
-static uint32_t softTimeout=DEFAUTL_TIMEOUT;	//Èí¼ş³¬Ê±Ê±¼ä(Õâ¸öÊ¹ÓÃsystick¼ÆÊ±µÄ£¬µ¥Î»ÊÇ1systick)
-static tLoRaSettings localSettingSave={435000000,20,7,7,1,0x000f};	//±¾µØ±£´æµÄÅäÖÃĞÅÏ¢£¬ÓÃÓÚÔÚ¸´Î»ºóÖØĞÂ³õÊ¼»¯
-volatile static tRFLRStates  loraStatus=RFLR_STATE_IDLE;	//µ±Ç°ÉäÆµ×´Ì¬»ú(²»ÊÇ·µ»Ø¸øÓÃ»§µÄtRFProcessReturnCodes£¬Õâ¸ö±ÈÓÃ»§¸øÓÃ»§µÄ×´Ì¬¶à)
+//è½¯ä»¶è¶…æ—¶æ—¶é—´(è¿™ä¸ªä½¿ç”¨systickè®¡æ—¶çš„ï¼Œå•ä½æ˜¯1systick)
+static uint32_t softTimeout=DEFAUTL_TIMEOUT;	
+//æœ¬åœ°ä¿å­˜çš„é…ç½®ä¿¡æ¯ï¼Œç”¨äºåœ¨å¤ä½åé‡æ–°åˆå§‹åŒ–
+static tLoRaSettings localSettingSave={435000000,20,7,7,1,0x000f};	
+//å½“å‰å°„é¢‘çŠ¶æ€æœº(ä¸æ˜¯è¿”å›ç»™ç”¨æˆ·çš„tRFProcessReturnCodesï¼Œè¿™ä¸ªæ¯”ç”¨æˆ·ç»™ç”¨æˆ·çš„çŠ¶æ€å¤š)
+volatile static tRFLRStates  loraStatus=RFLR_STATE_IDLE;	
 
 /**
- * ³õÊ¼»¯LoRaÅäÖÃº¯Êı
- * ²ÎÊı
- *     stting£ºÅäÖÃ½á¹¹Ìå£¬´«ÈëĞèÒªÉèÖÃµÄ²ÎÊı£¬eg{435000000,20,8,7,1}£¬¾ßÌåÄÚÈİ²é¿´ tLoRaSettings ¶¨Òå,Èç¹û´«ÈëNULL£¬±íÊ¾¼ÓÔØÉÏ´ÎµÄÉèÖÃ(ÉÏ´ÎÃ»ÓĞ¾Í¼ÓÔØÄ¬ÈÏÉèÖÃ)
+ * åˆå§‹åŒ–LoRaé…ç½®å‡½æ•°
+ * å‚æ•°
+ *     sttingï¼šé…ç½®ç»“æ„ä½“ï¼Œä¼ å…¥éœ€è¦è®¾ç½®çš„å‚æ•°ï¼Œeg{435000000,20,8,7,1}ï¼Œå…·ä½“å†…å®¹æŸ¥çœ‹ tLoRaSettings å®šä¹‰,å¦‚æœä¼ å…¥NULLï¼Œè¡¨ç¤ºåŠ è½½ä¸Šæ¬¡çš„è®¾ç½®(ä¸Šæ¬¡æ²¡æœ‰å°±åŠ è½½é»˜è®¤è®¾ç½®)
  */
 void sx127xInit(tLoRaSettings *stting){
 	SX1276HALInit();
@@ -45,9 +48,9 @@ void sx127xInit(tLoRaSettings *stting){
 	SX127xSetLoRaMode();
 	
 	if(NULL!=stting){
-		memcpy(&localSettingSave,stting,sizeof(tLoRaSettings));	//¸´ÖÆÅäÖÃĞÅÏ¢
+		memcpy(&localSettingSave,stting,sizeof(tLoRaSettings));	//å¤åˆ¶é…ç½®ä¿¡æ¯
 	}
-	stting=&localSettingSave;	//settingÖ¸Ïò±¸·İÊı¾İ£¬±ÜÃâĞŞ¸Äµ¼ÖÂsettingÔ­Öµ¸Ä±ä
+	stting=&localSettingSave;	//settingæŒ‡å‘å¤‡ä»½æ•°æ®ï¼Œé¿å…ä¿®æ”¹å¯¼è‡´settingåŸå€¼æ”¹å˜
 	
 	if(stting->SignalBw>9){
 		DEBUG("[WARRING %s()-%d]setting error,auto fix\r\n",__func__,__LINE__);
@@ -74,23 +77,24 @@ void sx127xInit(tLoRaSettings *stting){
 		stting->Power=20;
 	}
 	
-	SX127xSetFrf(stting->RFFrequency);//ÉèÖÃÆµÂÊ
+	SX127xSetFrf(stting->RFFrequency);//è®¾ç½®é¢‘ç‡
 	Write127xReg(REG_LR_MODEMCONFIG1,u8_BWList[stting->SignalBw]|u8_CRList[stting->ErrorCoding -1]|RFLR_MODEMCONFIG1_IMPLICITHEADER_OFF);//ÉèÖÃ´ø¿í¡¢¾À´í±àÂëÂÊ
 	Write127xReg(REG_LR_MODEMCONFIG2,u8_SFList[stting->SpreadingFactor-6] | RFLR_MODEMCONFIG2_TXCONTINUOUSMODE_OFF|RFLR_MODEMCONFIG2_RXPAYLOADCRC_ON|0x03);//ÉèÖÃSD£¬CRC£¬³¬Ê±Ê±¼ä
-	Write127xReg(REG_LR_SYMBTIMEOUTLSB,0xFF);//ÉèÖÃ³¬Ê±Ê±¼ä
-	Write127xReg(REG_LR_MODEMCONFIG3,0x0C);//ÉèÖÃµÍËÙÂÊ(°ü³¤³¬¹ı16ms±ØĞë´ò¿ª)
+	Write127xReg(REG_LR_SYMBTIMEOUTLSB,0xFF);//è®¾ç½®è¶…æ—¶æ—¶é—´
+	Write127xReg(REG_LR_MODEMCONFIG3,0x0C);//è®¾ç½®ä½é€Ÿç‡(åŒ…é•¿è¶…è¿‡16mså¿…é¡»æ‰“å¼€)
 	
 	if(stting->Power>17){
-		Write127xReg(REG_LR_PACONFIG,0x80+stting->Power-5);//ÉèÖÃ¹¦ÂÊ
-		Write127xReg(0x4d,0x87);//ÉèÖÃ¸ü´ó¹¦ÂÊ
+		Write127xReg(REG_LR_PACONFIG,0x80+stting->Power-5);//è®¾ç½®åŠŸç‡
+		Write127xReg(0x4d,0x87);//è®¾ç½®æ›´å¤§åŠŸç‡
 	}else{
-		Write127xReg(REG_LR_PACONFIG,0x80+stting->Power-2);//ÉèÖÃ¹¦ÂÊ
-		Write127xReg(0x4d,0x84);//¹Ø±Õ¸ü´ó¹¦ÂÊ
+		Write127xReg(REG_LR_PACONFIG,0x80+stting->Power-2);//è®¾ç½®åŠŸç‡
+		Write127xReg(0x4d,0x84);//å…³é—­æ›´å¤§åŠŸç‡
 	}
-	Write127xReg(REG_LR_OCP,0x3B);//¹ıÁ÷±£»¤
-	//ÉèÖÃÇ°µ¼Âë³¤¶È REG_LR_PREAMBLEMSB
-	Write127xReg(REG_LR_PREAMBLEMSB,stting->PreambleLength>>8);	//Ç°µ¼Âë¸ßÓĞĞ§Î»
-	Write127xReg(REG_LR_PREAMBLELSB,stting->PreambleLength&0x00ff);	//Ç°µ¼ÂëµÍÓĞĞ§Î»
+	Write127xReg(REG_LR_OCP,0x3B);//è¿‡æµä¿æŠ¤
+	//è®¾ç½®å‰å¯¼ç é•¿åº¦ REG_LR_PREAMBLEMSB
+	Write127xReg(REG_LR_PREAMBLEMSB,stting->PreambleLength>>8);	//å‰å¯¼ç é«˜æœ‰æ•ˆä½
+	Write127xReg(REG_LR_PREAMBLELSB,stting->PreambleLength&0x00ff);	//å‰å¯¼ç ä½æœ‰æ•ˆä½
+
 }
 
 void Sx127xRestart(void){
@@ -137,7 +141,7 @@ void SX127xReadFifo( uint8_t *buffer, uint8_t size )
     SX1278ReadBuffer( 0, buffer, size );
 }
 
-//ÉèÖÃOpMode
+//è®¾ç½®OpMode
 void SX127xSetOpMode(LoRaOpModeType opMode)
 {
 	if(opMode==SX127xGetOpMode()){
@@ -147,7 +151,7 @@ void SX127xSetOpMode(LoRaOpModeType opMode)
 	Soft_delay_ms(1);
 }
 
-//»ñÈ¡OpMode
+//è·å–OpMode
 LoRaOpModeType SX127xGetOpMode(void)
 {
     return (LoRaOpModeType)(Read127xReg(REG_LR_OPMODE)&RFLR_OPMODE_MASK);
@@ -158,13 +162,13 @@ static void SX1278ReadBuffer(uint8_t addr,uint8_t *buffer,uint8_t size)
     uint8_t i;
 
     //NSS = 0;
-		SpiNSSEnable(0);	//Æ¬Ñ¡spi1
+		SpiNSSEnable(0);	//ç‰‡é€‰spi1
 
     SpiInOut(addr & 0x7F );
 
     for( i = 0; i < size; i++ )
     {
-        buffer[i] = SpiInOut(0x00);//¶ÁÈ¡Êı¾İ
+        buffer[i] = SpiInOut(0x00); //è¯»å–æ•°æ®
     }
 
     //NSS = 1;
@@ -181,19 +185,19 @@ static void SX1278WriteBuffer(uint8_t addr,uint8_t *buffer,uint8_t size)
     SpiInOut(addr | 0x80 );
     for( i = 0; i < size; i++ )
     {
-			SpiInOut(buffer[i]);//Ğ´ÈëÊı¾İ
+			SpiInOut(buffer[i]);//å†™å…¥æ•°æ®
     }
 
     //NSS = 1;
 		SpiNSSEnable(1);
 }
 
-//ÉèÖÃÔØ²¨ÆµÂÊ
+//è®¾ç½®è½½æ³¢é¢‘ç‡
 void SX127xSetFrf(uint32_t fr)
 {
 	uint8_t frfBuf[4];
 	
-	fr=fr*0.016384;//¸ù¾İÊı¾İÊÖ²á¼ÆËã¼Ä´æÆ÷ÒªÉèÖÃµÄÖµ
+	fr=fr*0.016384;//æ ¹æ®æ•°æ®æ‰‹å†Œè®¡ç®—å¯„å­˜å™¨è¦è®¾ç½®çš„å€¼
 	memcpy(frfBuf,&fr,4);
 	SX127xSetOpMode(LORA_OPMODE_SLEEP);
 
@@ -202,27 +206,28 @@ void SX127xSetFrf(uint32_t fr)
 	Write127xReg(REG_LR_FRFLSB,frfBuf[0]);
 }
 
+
 /**
- * ·¢ËÍÊı¾İ£¨×èÈû·¢ËÍ£©
- * ²ÎÊı£º
- *     data£ºÒª·¢ËÍµÄÊı¾İ
- *     len£ºdataµÄ³¤¶È
- *     timeoutMs£º³¬Ê±Ê±¼ä£¨Õâ¸öÊ±¼äÊ¹ÓÃsystick£©
- * ·µ»ØÖµ£º
- *     0³É¹¦
- *     1³¬Ê±
+ * å‘é€æ•°æ®ï¼ˆé˜»å¡å‘é€ï¼‰
+ * å‚æ•°ï¼š
+ *     dataï¼šè¦å‘é€çš„æ•°æ®
+ *     lenï¼šdataçš„é•¿åº¦
+ *     timeoutMsï¼šè¶…æ—¶æ—¶é—´ï¼ˆè¿™ä¸ªæ—¶é—´ä½¿ç”¨systickï¼‰
+ * è¿”å›å€¼ï¼š
+ *     0æˆåŠŸ
+ *     1è¶…æ—¶
  */
 uint8_t sx127xSend(uint8_t *data,uint8_t len,uint32_t timeoutMs){
 	uint32_t systickBak=GET_TICK_COUNT(),currTick;
 	
-	Write127xReg( REG_LR_PAYLOADLENGTH, len );	//ÉèÖÃ¸ºÔØ³¤¶È
+	Write127xReg( REG_LR_PAYLOADLENGTH, len );	//è®¾ç½®è´Ÿè½½é•¿åº¦
 
-	Write127xReg( REG_LR_FIFOTXBASEADDR, 0 );//½«·¢ËÍbufµÄ»ùµØÖ·Ö¸Ïò0x00£¬´ËÊ±Õû¸öfifo¶¼¿ÉÒÔÓÃÀ´·¢ËÍÊı¾İ
-	Write127xReg( REG_LR_FIFOADDRPTR, 0 );//½«fifi¶ÁĞ´Ö¸ÕëÖ´ĞĞ0x00£¬´ËÊ±Ïò¼Ä´æÆ÷0x00¶ÁĞ´Êı¾İÖ¸Õë»á×ÔÔöµÄ½«Êı¾İĞ´Èëfifo
-	SX127xSetOpMode(LORA_OPMODE_STANDBY);//LORA_OPMODE_SLEEP Ä£Ê½²»ÄÜ¶ÁĞ´fifo
+	Write127xReg( REG_LR_FIFOTXBASEADDR, 0 );//å°†å‘é€bufçš„åŸºåœ°å€æŒ‡å‘0x00ï¼Œæ­¤æ—¶æ•´ä¸ªfifoéƒ½å¯ä»¥ç”¨æ¥å‘é€æ•°æ®
+	Write127xReg( REG_LR_FIFOADDRPTR, 0 );//å°†fifiè¯»å†™æŒ‡é’ˆæ‰§è¡Œ0x00ï¼Œæ­¤æ—¶å‘å¯„å­˜å™¨0x00è¯»å†™æ•°æ®æŒ‡é’ˆä¼šè‡ªå¢çš„å°†æ•°æ®å†™å…¥fifo
+	SX127xSetOpMode(LORA_OPMODE_STANDBY);//LORA_OPMODE_SLEEP æ¨¡å¼ä¸èƒ½è¯»å†™fifo
 	
-	SX127xWriteFifo(data,len);	//½«Òª·¢ËÍµÄÊı¾İĞ´Èëfifo
-	//¿ªÆôÖĞ¶ÏÆÁ±ÎÎ»(Ö»ÁôÏÂÁË RFLR_IRQFLAGS_TXDONE ÖĞ¶ÏÃ»ÓĞÆÁ±Îµô)£¬ÉèÖÃÎª·¢ËÍÄ£Ê½ºóÈÎÒâ¶ÁĞ´Ò»¸ö¼Ä´æÆ÷¾Í»á´¥·¢·¢ËÍ£¬ÕâÀïĞ´ÈëÕâ¸ö¿ªÖĞ¶ÏÕıºÃ´¥·¢
+	SX127xWriteFifo(data,len);	//å°†è¦å‘é€çš„æ•°æ®å†™å…¥fifo
+	//å¼€å¯ä¸­æ–­å±è”½ä½(åªç•™ä¸‹äº† RFLR_IRQFLAGS_TXDONE ä¸­æ–­æ²¡æœ‰å±è”½æ‰)ï¼Œè®¾ç½®ä¸ºå‘é€æ¨¡å¼åä»»æ„è¯»å†™ä¸€ä¸ªå¯„å­˜å™¨å°±ä¼šè§¦å‘å‘é€ï¼Œè¿™é‡Œå†™å…¥è¿™ä¸ªå¼€ä¸­æ–­æ­£å¥½è§¦å‘
 	Write127xReg( REG_LR_IRQFLAGSMASK, RFLR_IRQFLAGS_RXTIMEOUT |
                                                   RFLR_IRQFLAGS_RXDONE |
                                                   RFLR_IRQFLAGS_PAYLOADCRCERROR |
@@ -231,14 +236,14 @@ uint8_t sx127xSend(uint8_t *data,uint8_t len,uint32_t timeoutMs){
                                                   RFLR_IRQFLAGS_CADDONE |
                                                   RFLR_IRQFLAGS_FHSSCHANGEDCHANNEL |
                                                   RFLR_IRQFLAGS_CADDETECTED );
-	Write127xReg( REG_LR_DIOMAPPING1, ( Read127xReg( REG_LR_DIOMAPPING1 ) & RFLR_DIOMAPPING1_DIO0_MASK ) | RFLR_DIOMAPPING1_DIO0_01 );//DIO0ÉèÖÃÎªTXdoneÖĞ¶Ï
+	Write127xReg( REG_LR_DIOMAPPING1, ( Read127xReg( REG_LR_DIOMAPPING1 ) & RFLR_DIOMAPPING1_DIO0_MASK ) | RFLR_DIOMAPPING1_DIO0_01 );//DIO0è®¾ç½®ä¸ºTXdoneä¸­æ–­
 	//DEBUG("DIO0=%d\r\n0x06:%02x\r\n",SX1276ReadDio0(),Read127xReg(0x06));
-	SX127xSetOpMode(LORA_OPMODE_TRANSMITTER);	//ÉèÖÃÎª·¢ËÍÄ£Ê½
-	Read127xReg(REG_LR_IRQFLAGS);//ÉèÖÃ·¢ËÍºó¶ÁĞ´ÈÎÒâ¼Ä´æÆ÷¿ÉÒÔ¿ªÊ¼·¢ËÍ
+	SX127xSetOpMode(LORA_OPMODE_TRANSMITTER);	//è®¾ç½®ä¸ºå‘é€æ¨¡å¼
+	Read127xReg(REG_LR_IRQFLAGS);//è®¾ç½®å‘é€åè¯»å†™ä»»æ„å¯„å­˜å™¨å¯ä»¥å¼€å§‹å‘é€
 	
 	while(1){
 		if(1==SX1276ReadDio0()){
-			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_TXDONE);//Çå³ıÖĞ¶Ï±êÖ¾Î»
+			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_TXDONE);//æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½
 			return 0;
 		}
 		currTick=GET_TICK_COUNT();
@@ -247,7 +252,7 @@ uint8_t sx127xSend(uint8_t *data,uint8_t len,uint32_t timeoutMs){
 				return 1;
 			}
 		}else{
-			//currTickÒç³öÁË
+			//currTickæº¢å‡ºäº†
 			if(currTick+(~systickBak)>timeoutMs){
 				return 1;
 			}
@@ -256,26 +261,26 @@ uint8_t sx127xSend(uint8_t *data,uint8_t len,uint32_t timeoutMs){
 }
 
 /**
- * ½ÓÊÕÊı¾İ£¨×èÈû½ÓÊÕ£©
- * ²ÎÊı
- *     buf£º½ÓÊÕÊı¾İµÄbuf¿Õ¼ä
- *     len£º´«ÈëbufµÄ´óĞ¡£¬·µ»Øºó»áĞŞ¸ÄÎª½ÓÊÕµ½Êı¾İµÄ³¤¶È£¨½ÓÊÕÊ§°Ü²»±ä£©
- *     timeoutMS£ºÈí¼ş³¬Ê±Ê±¼ä
- * ·µ»ØÖµ
- *     0£º½ÓÊÕ³É¹¦
- *     1£ºDIO1³¬Ê±£¨DIO1³¬Ê±ÊÇÓ²¼ş·µ»ØµÄ£¬ºÍtimeoutMSÎŞ¹Ø£©
- *     2£ºÈí¼ş³¬Ê±
+ * æ¥æ”¶æ•°æ®ï¼ˆé˜»å¡æ¥æ”¶ï¼‰
+ * å‚æ•°
+ *     bufï¼šæ¥æ”¶æ•°æ®çš„bufç©ºé—´
+ *     lenï¼šä¼ å…¥bufçš„å¤§å°ï¼Œè¿”å›åä¼šä¿®æ”¹ä¸ºæ¥æ”¶åˆ°æ•°æ®çš„é•¿åº¦ï¼ˆæ¥æ”¶å¤±è´¥ä¸å˜ï¼‰
+ *     timeoutMSï¼šè½¯ä»¶è¶…æ—¶æ—¶é—´
+ * è¿”å›å€¼
+ *     0ï¼šæ¥æ”¶æˆåŠŸ
+ *     1ï¼šDIO1è¶…æ—¶ï¼ˆDIO1è¶…æ—¶æ˜¯ç¡¬ä»¶è¿”å›çš„ï¼Œå’ŒtimeoutMSæ— å…³ï¼‰
+ *     2ï¼šè½¯ä»¶è¶…æ—¶
  */
 uint8_t sx127xRx(uint8_t *buf,uint8_t *len,uint32_t timeoutMs){
 	uint32_t systickBak=GET_TICK_COUNT(),currTick;
 	uint8_t u8_reciveLength;
 	
 	SX127xSetOpMode(LORA_OPMODE_STANDBY);
-	Write127xReg( REG_LR_FIFORXBASEADDR, 0 );//½«½ÓÊÕbufµÄ»ùµØÖ·Ö¸Ïò0x00£¬´ËÊ±Õû¸öfifo¶¼¿ÉÒÔÓÃÀ´½ÓÊÕÊı¾İ
-	Write127xReg( REG_LR_FIFOADDRPTR, 0 );//½«fifi¶ÁĞ´Ö¸ÕëÖ´ĞĞ0x00£¬´ËÊ±Ïò¼Ä´æÆ÷0x00¶ÁĞ´Êı¾İÖ¸Õë»á×ÔÔöµÄ´ÓfifoÖĞ¶ÁÈ¡Êı¾İ
-	Write127xReg( REG_LR_SYMBTIMEOUTLSB, 0xFF );//ÅäÖÃ 0x1f rx³¬Ê±
+	Write127xReg( REG_LR_FIFORXBASEADDR, 0 );//å°†æ¥æ”¶bufçš„åŸºåœ°å€æŒ‡å‘0x00ï¼Œæ­¤æ—¶æ•´ä¸ªfifoéƒ½å¯ä»¥ç”¨æ¥æ¥æ”¶æ•°æ®
+	Write127xReg( REG_LR_FIFOADDRPTR, 0 );//å°†fifiè¯»å†™æŒ‡é’ˆæ‰§è¡Œ0x00ï¼Œæ­¤æ—¶å‘å¯„å­˜å™¨0x00è¯»å†™æ•°æ®æŒ‡é’ˆä¼šè‡ªå¢çš„ä»fifoä¸­è¯»å–æ•°æ®
+	Write127xReg( REG_LR_SYMBTIMEOUTLSB, 0xFF );//é…ç½® 0x1f rxè¶…æ—¶
 	
-	//ÅäÖÃÖĞ¶Ï
+	//é…ç½®ä¸­æ–­
 	Write127xReg( REG_LR_IRQFLAGSMASK, RFLR_IRQFLAGS_RXTIMEOUT |
                                                   //RFLR_IRQFLAGS_RXDONE |
                                                   RFLR_IRQFLAGS_PAYLOADCRCERROR |
@@ -286,13 +291,13 @@ uint8_t sx127xRx(uint8_t *buf,uint8_t *len,uint32_t timeoutMs){
                                                   RFLR_IRQFLAGS_CADDETECTED );
 	// DIO0=RxDone 0x00, DIO2=RxTimeout 0x00
   Write127xReg( REG_LR_DIOMAPPING1, ( Read127xReg( REG_LR_DIOMAPPING1) & RFLR_DIOMAPPING1_DIO0_MASK) | RFLR_DIOMAPPING1_DIO0_00 | RFLR_DIOMAPPING1_DIO1_00);
-	SX127xSetOpMode(LORA_OPMODE_RECEIVER);//Á¬Ğø½ÓÊÕ
-	//SX127xSetOpMode( LORA_OPMODE_RECIVER_SINGLE );//µ¥´Î½ÓÊÕ
-	Read127xReg(REG_LR_IRQFLAGS);//ÉèÖÃ½ÓÊÕºó¶ÁĞ´ÈÎÒâ¼Ä´æÆ÷¿ÉÒÔ¿ªÊ¼½ÓÊÕ
+	SX127xSetOpMode(LORA_OPMODE_RECEIVER);//è¿ç»­æ¥æ”¶
+	//SX127xSetOpMode( LORA_OPMODE_RECIVER_SINGLE );//å•æ¬¡æ¥æ”¶
+	Read127xReg(REG_LR_IRQFLAGS);//è®¾ç½®æ¥æ”¶åè¯»å†™ä»»æ„å¯„å­˜å™¨å¯ä»¥å¼€å§‹æ¥æ”¶
 	
 	while(1){
 		if(1==SX1276ReadDio0()){
-			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_RXDONE);//Çå³ıÖĞ¶Ï±êÖ¾Î»
+			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_RXDONE);//æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½
 			u8_reciveLength=Read127xReg(REG_LR_NBRXBYTES);
 			if(u8_reciveLength > *len){
 				u8_reciveLength=*len;
@@ -303,7 +308,7 @@ uint8_t sx127xRx(uint8_t *buf,uint8_t *len,uint32_t timeoutMs){
 			return 0;
 		}
 		if(1==SX1276ReadDio1()){
-			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_RXTIMEOUT);//Çå³ıÖĞ¶Ï±êÖ¾Î»
+			Write127xReg(REG_LR_IRQFLAGS,RFLR_IRQFLAGS_RXTIMEOUT);//æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½
 			return 1;
 		}
 		currTick=GET_TICK_COUNT();
@@ -312,7 +317,7 @@ uint8_t sx127xRx(uint8_t *buf,uint8_t *len,uint32_t timeoutMs){
 				return 1;
 			}
 		}else{
-			//currTickÒç³öÁË
+			//currTickæº¢å‡ºäº†
 			if(currTick+(~systickBak)>timeoutMs){
 				return 1;
 			}

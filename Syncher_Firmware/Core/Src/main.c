@@ -146,9 +146,9 @@ volatile uint16_t capture_val_up;//ÉÏÉýÑØÊ±¼ÆÊýÆ÷µÄÖµ
 volatile uint16_t capture_val_down;//ÏÂ½µÑØÊ±¼ÆÊýÆ÷µÄÖµ
 volatile uint8_t flag;//Êý¾Ý½áÊøµÄ±êÖ¾Î»£¬½áÊøÊ±tag=1
 
-//char txBuf1[18] = {'5','0','8','7','9',0xff,'5','0','8','7','9',0xff,'5','0','8','7','9',0xff};
-char txBuf1[20] = "t";  //9.30
-char rxBuf1[40] = "rxtest";
+#define LEN_RXBUF 128
+u8 txBuf1[20];  //9.30
+u8 rxBuf[LEN_RXBUF];
 
 char rcv_flag1 = 0;
 char rcv_flag2 = 0;
@@ -171,8 +171,8 @@ uint32_t Sensor_ID = 0;
 ////	}
 //}
 void delay_0(void){
-	int i=0;
-	int j=0;
+	u32 i=0;
+	u32 j=0;
 	for(i=0;i<1000;i++){
 		for(j=0;j<1000;j++){
 		
@@ -195,6 +195,9 @@ void tri_mmwave(){
 }
 uint16_t Prescal_list[] = {500,1000,2000,5000,10000};
 
+
+
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     HAL_TIM_Base_Stop_IT(&htim2);
@@ -216,15 +219,16 @@ int Key_handle(uint32_t key)
 
         {
             u16 i=0;
-        if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½1000Ms
-                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-        //				DEBUG("send ok\r\n");
-        	}else{
+            if(0==sx127xSend((uint8_t *)"t",strlen("t"),1000))
+            {   
+                toggle_led();
+        	}else
+            {
         	    i = 2;
-        //				DEBUG("send timeout\r\n");
+//				DEBUG("send timeout\r\n");
         	}
         } 
-//        Radio->SetTxPacket(txBuf1, 4);
+
 //      delay_0();
         pulse_max = 32;
         htim22.Init.Prescaler = Prescal_list[prelist_cnt];
@@ -301,25 +305,25 @@ void OnSlave( void )
 {
 	uint8_t rf_state = Radio->Process();
 	if(rf_state==RF_RX_DONE){
-		Radio->GetRxPacket( rxBuf1, ( uint16_t* )&BufferSize );
+		Radio->GetRxPacket( rxBuf, ( uint16_t* )&BufferSize );
 		//
-		if(rxBuf1[0]=='t'){
+		if(rxBuf[0]=='t'){
 			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);//Usart send to server
 			toggle_led();
             
 			HAL_TIM_Base_Stop_IT(&htim22);
 			HAL_TIM_Base_Start_IT(&htim22);
 //			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1,GPIO_PIN_RESET);
-		}else if(rxBuf1[0] == 'c'){
+		}else if(rxBuf[0] == 'c'){
 			pulse_max = txBuf1[2];
 			htim22.Init.Prescaler = Prescal_list[txBuf1[1]];
 		}
-		else if(rxBuf1[0] == 'T'){
+		else if(rxBuf[0] == 'T'){
 			int i = 1;
 			
             for(i=1;i < BufferSize;i++)
             {
-                if(rxBuf1[i]=='t')
+                if(rxBuf[i]=='t')
                 {
                     toggle_led();
                     break;
@@ -327,7 +331,7 @@ void OnSlave( void )
             }
             
 		}
-		memset(rxBuf1,0,BufferSize);
+		memset(rxBuf,0,BufferSize);
 	}
 	
 }
@@ -385,15 +389,15 @@ void OnMaster( void )
       if (uwTick - time_now < TIME_WAIT * slot_time_100ms *100)
       {
         if(rf_state==RF_RX_DONE){
-			Radio->GetRxPacket( rxBuf1, ( uint16_t* )&BufferSize );
+			Radio->GetRxPacket( rxBuf, ( uint16_t* )&BufferSize );
 			//
-			if(rxBuf1[0]>='0' && rxBuf1[4]<='9'){
-				rxBuf1[6] = '\r';
-				rxBuf1[7] = '\n';
-				HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);//Usart send to server
+			if(rxBuf[0]>='0' && rxBuf[4]<='9'){
+				rxBuf[6] = '\r';
+				rxBuf[7] = '\n';
+				HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf, strlen(rxBuf), 0xffff);//Usart send to server
 				toggle_led();
 			}
-			memset(rxBuf1,0,BufferSize);
+			memset(rxBuf,0,BufferSize);
 		}
 		else{
 			master_state = M_RECEIVE;
@@ -463,14 +467,14 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 //	HAL_UART_Transmit(&huart1, (uint8_t *)txBuf1, strlen(txBuf1), 0xffff);
-	//	HAL_UART_Transmit(&huart2, (uint8_t *)txBuf2, strlen(txBuf2), 0xffff);
+//	HAL_UART_Transmit(&huart2, (uint8_t *)txBuf2, strlen(txBuf2), 0xffff);
 //	HAL_UART_Receive_IT(&huart1, (uint8_t *)rxBuf1, SENSOR_BYTE);
-	//	HAL_UART_Receive_IT(&huart2, (uint8_t *)rxBuf2, 10);
+//	HAL_UART_Receive_IT(&huart2, (uint8_t *)rxBuf2, 10);
 
     // radio init
-    tLoRaSettings setting={435000000,20,7,12,1,0x0005};  //Æµï¿½ï¿½435Mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20dbmï¿½ï¿½ï¿½ï¿½ï¿½ï¿½125kHzï¿½ï¿½SF=12ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4/5,Ç°ï¿½ï¿½ï¿½ë³¤ï¿½ï¿½0x0005
-//    sx127xInit(&setting);
-    g_Radio.Init(&setting);  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //435M, 20dbm, 125kHz, SF=12, 4/5,0x0005
+    tLoRaSettings setting={435000000,20,7,12,1,0x0005};  
+    g_Radio.Init(&setting);  
    
 	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin, GPIO_PIN_RESET);
 
@@ -480,63 +484,49 @@ int main(void)
 	}else{
 		op_mode = 0; //slave
 	}
-	//HAL_TIM_Base_Start_IT(&htim22);
+
+    // æŒ‰é”®æ ‡è¯†ä¸»ä»Žï¼Œåˆå§‹åŒ–
+    if(op_mode) // Master
+    {
+        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_SET);
+        while(1){};
+    }
+    else // Slaver
+    {
+        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_RESET);
+    }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    // æŒ‰é”®æ ‡è¯†ä¸»ä»Žï¼Œåˆå§‹åŒ–
-    if(op_mode)
-    {
-        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_SET);
-    }
-    else
-    {
-        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_RESET);
-    }
-
-    uint8_t u8_ret,rxBuf[128]={0},rxCount=255;
+    u8 u8_ret, rxCount=255;
     while (1)
     {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-        u16 i= 0;
-    	if(op_mode)
-    	{
-            
-//			if(0==sx127xSend((uint8_t *)"aithinker",strlen("aithinker"),1000)){	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½1000Ms
-//                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-//                i = 1;
-////				DEBUG("send ok\r\n");
-//			}else{
-//			    i = 2;
-////				DEBUG("send timeout\r\n");
-//			}
-////			delayMsBySystick(1000);
-    	}
-		else	
-		{
-			rxCount = 255;
-			memset(rxBuf,0,255);
-//			DEBUG("start rx\r\n");
-			u8_ret = sx127xRx(rxBuf,&rxCount,2000);	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½rxBufï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½rxCountï¿½æ´¢ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±1000Ms
-			switch(u8_ret){
-				case 0:
-                    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-                    i = 1;
-//					DEBUG("rx done\r\n  len:%d\r\n  playload:%s\r\n",rxCount,rxBuf);
-					break;
-				case 1:
-				case 2:
-                    i = 2;
+		rxCount = 255;
+//		memset(rxBuf,0,LEN_RXBUF);
+		u8_ret = sx127xRx(rxBuf,&rxCount,2000);	
+		switch(u8_ret){
+			case 0:
+                if(rxBuf[0]=='t'){
+        			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
+//        			toggle_led();
+
+                    // Slaver Passive trig timer reset and start
+        			HAL_TIM_Base_Stop_IT(&htim22);
+        			HAL_TIM_Base_Start_IT(&htim22);
+        		}
+                toggle_led();
+				break;
+			case 1:
+			case 2:
 //					DEBUG("rx timeout ret:%d\r\n",u8_ret);
-					break;
-				default:
-                    i = 3;
+				break;
+			default:
 //					DEBUG("unknow ret:%d\r\n",u8_ret);
-					break;
-			}
+				break;
 		}
     }
   /* USER CODE END 3 */
