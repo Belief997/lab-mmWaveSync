@@ -129,7 +129,6 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-    g_u32SystickCount++;
   /* USER CODE END SysTick_IRQn 0 */
 
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -180,6 +179,7 @@ void TIM2_IRQHandler(void)
 void TIM21_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM21_IRQn 0 */
+  g_u32SystickCount++;
 
   /* USER CODE END TIM21_IRQn 0 */
   HAL_TIM_IRQHandler(&htim21);

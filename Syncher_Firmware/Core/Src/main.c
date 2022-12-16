@@ -94,7 +94,7 @@ enum master_state{
 
 extern __IO uint32_t uwTick;
 uint8_t pulse_cnt = 0;
-uint8_t pulse_max = 8;
+uint8_t pulse_max = 32;
 
 extern volatile uint32_t uwTick;
 static uint16_t BufferSize = BUFFER_SIZE;			// RF buffer size
@@ -108,6 +108,9 @@ u8 txBuf1[20];  //9.30
 u8 rxBuf[LEN_RXBUF];
 
 uint16_t Prescal_list[] = {500,1000,2000,5000,10000};
+
+volatile u32 MasterDelayMs = 27;
+volatile u32 MasterDelayUs = 50;
 
 
 extern tRadioDriver g_Radio;
@@ -149,67 +152,73 @@ int Key_timer_cb(void);
 void delay_0(void){
 	u32 i=0;
 	u32 j=0;
+    
 	for(i=0;i<1000;i++){
 		for(j=0;j<1000;j++){
 		}
 	}
 }
-void toggle_led(){
-	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-}
-void tri_mmwave(){
-	int i = 0;
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1,GPIO_PIN_SET);
-	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	//HAL_TIM_Base_Start_IT(&htim1);
-//	HAL_GPIO_TogglePin(LED_IOPORT, LED_PIN);
-	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_10);
-	while(i<5){ //delay 
-		i = i+1;}
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1,GPIO_PIN_RESET);
-}
 
-// 定时器中断入口
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-	int i = 0;
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM21) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-	if (htim->Instance == TIM22) {
-		if(pulse_cnt < pulse_max)
-        {
-//            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_SET);	   
-//            GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
-//            GPIOx->BSRR = Pulse_Pin;
-
-			while(i<1){ //delay 
-				i = i+1;}
-			HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
-//            GPIOx->BRR = Pulse_Pin ;
-
-			pulse_cnt++;
-//			HAL_TIM_Base_Start_IT(&htim22);
-		}
-        else
-        {
-			pulse_cnt = 0;
-			HAL_TIM_Base_Stop_IT(&htim22);
-            HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_SET);
+void delay_us(u32 time){
+	u32 i=0;
+	u32 j=0;
+    
+	for(i=0;i<time;i++){
+		for(j=0;j<1000;j++){
 		}
 	}
-    else if(htim->Instance == TIM2)
-    {
-        Key_timer_cb();
-    }
-  /* USER CODE END Callback 1 */
 }
 
-// 按键 IO 边沿触发中断，重置定时器延迟获取按键状态
+
+void delayMsBySystick(uint32_t timeoutMs){
+	uint32_t systickBak,currTick;
+	systickBak = GetTick();
+	while(1){
+		currTick=GetTick();
+		if(currTick>=systickBak){
+			if(currTick-systickBak>timeoutMs){
+				return;
+			}
+		}else{
+			//currTick 溢出
+			if(currTick+(~systickBak)>timeoutMs){
+				return;
+			}
+		}
+	}
+}
+
+void toggle_led(void)
+{
+	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+}
+void tri_mmwave(void)
+{
+    int i = 0;
+
+    // 产生�?个正脉冲
+//            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_SET);	   
+//    GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
+//    GPIOx->BSRR = Pulse_Pin;
+
+    // 控制高电平时�?
+//	while(i < 1)
+    { //delay 
+        i = i+1;
+//        i = i+1;
+    }
+	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
+//    GPIOx->BRR = Pulse_Pin ;
+
+	pulse_cnt++;
+
+    // Slaver Passive trig timer reset and start
+    HAL_TIM_Base_Stop_IT(&htim22);
+    HAL_TIM_Base_Start_IT(&htim22);
+}
+
+// 按键 IO 边沿触发中断，重置定时器延迟获取按键状�??
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     HAL_TIM_Base_Stop_IT(&htim2);
@@ -221,18 +230,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 int Key_handle(uint32_t key)
 {
     static uint8_t prelist_cnt = 0;
-    delay_0();
     if(key == BTN1_Pin){
-        txBuf1[0] = 't';
-        txBuf1[1] = 'r';
-        txBuf1[2] = 'i';
-        txBuf1[3] = 'g';
+//        txBuf1[0] = 't';
+//        txBuf1[1] = 'r';
+//        txBuf1[2] = 'i';
+//        txBuf1[3] = 'g';
 
         {
             u16 i=0;
+            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
             if(0==sx127xSend((uint8_t *)"t",strlen("t"),1000))
             {   
-                toggle_led();
+                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//                toggle_led();
         	}else
             {
         	    i = 2;
@@ -241,11 +251,12 @@ int Key_handle(uint32_t key)
         } 
 
 //      delay_0();
-        pulse_max = 32;
-        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
 
         // trig pulse timer
-        HAL_TIM_Base_Start_IT(&htim22);
+        delayMsBySystick(MasterDelayMs);
+        delay_us(MasterDelayUs);
+        tri_mmwave();
+//        HAL_TIM_Base_Start_IT(&htim22);
     }
     
     if(key == BTN2_Pin){
@@ -258,8 +269,8 @@ int Key_handle(uint32_t key)
 //        Radio->SetTxPacket(txBuf1, 4);
         
         //��������֡
-        pulse_max = 32;
-        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
+//        pulse_max = 32;
+//        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
     }
         
     if(key == BTN3_Pin){
@@ -273,8 +284,8 @@ int Key_handle(uint32_t key)
 //        Radio->SetTxPacket(txBuf1, 4);
         
         //��������֡
-        pulse_max = 32;
-        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
+//        pulse_max = 32;
+//        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
         
     }
 
@@ -285,27 +296,27 @@ int Key_handle(uint32_t key)
 int Key_timer_cb(void)
 {  
     HAL_TIM_Base_Stop_IT(&htim2);
-    // 依次判断哪个按键按下了
+    // 依次判断哪个按键按下�?
     if(0 == HAL_GPIO_ReadPin(BTN1_GPIO_Port, BTN1_Pin))
     {
 
 //        HAL_GPIO_TogglePin(LED_KEY_GPIO_Port, LED_KEY_Pin);
         HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_RESET);
-        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//        toggle_led();
         Key_handle(BTN1_Pin);
 
     }
     else if(0 == HAL_GPIO_ReadPin(BTN2_GPIO_Port, BTN2_Pin))
     {
 
-        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+        toggle_led();
         Key_handle(BTN2_Pin);
 
     }
     else if(0 == HAL_GPIO_ReadPin(BTN3_GPIO_Port, BTN3_Pin))
     {
 
-        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+        toggle_led();
         Key_handle(BTN3_Pin);
     }
 
@@ -424,24 +435,6 @@ void OnMaster( void )
     }
 }
 
-void delayMsBySystick(uint32_t timeoutMs){
-	uint32_t systickBak,currTick;
-	systickBak = GetTick();
-	while(1){
-		currTick=GetTick();
-		if(currTick>=systickBak){
-			if(currTick-systickBak>timeoutMs){
-				return;
-			}
-		}else{
-			//currTick�����
-			if(currTick+(~systickBak)>timeoutMs){
-				return;
-			}
-		}
-	}
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -522,15 +515,14 @@ int main(void)
 		ret = sx127xRx(rxBuf,&rxCount,2000);	
 		switch(ret){
 			case 0:
+                toggle_led();
                 if(rxBuf[0]=='t'){
         			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
 //        			toggle_led();
-
-                    // Slaver Passive trig timer reset and start
-        			HAL_TIM_Base_Stop_IT(&htim22);
-        			HAL_TIM_Base_Start_IT(&htim22);
+                    // Slaver 立即�?始触发电平控�?
+                    tri_mmwave();
         		}
-                toggle_led();
+                
 				break;
 			case 1:
 			case 2:
@@ -561,12 +553,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_8;
   RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -884,6 +875,61 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM21 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM21) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+      if (htim->Instance == TIM22) 
+        {
+            if(pulse_cnt < pulse_max)
+            {
+                int i = 0;
+
+                // 产生�?个正脉冲
+                //            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+                HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_SET);    
+//                GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
+//                GPIOx->BSRR = Pulse_Pin;
+
+                // 控制高电平时�?
+//                while(i < 1)
+                { //delay 
+                    i = i+1;
+                }
+                HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
+//                GPIOx->BRR = Pulse_Pin ;
+
+                pulse_cnt++;
+
+            }
+            else
+            {
+                pulse_cnt = 0;
+                HAL_TIM_Base_Stop_IT(&htim22);
+                HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_SET);
+            }
+    	}
+    else if(htim->Instance == TIM2)
+    {
+        Key_timer_cb();
+    }
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
