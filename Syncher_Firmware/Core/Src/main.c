@@ -94,7 +94,7 @@ enum master_state{
 
 extern __IO uint32_t uwTick;
 uint8_t pulse_cnt = 0;
-uint8_t pulse_max = 32;
+uint8_t pulse_max = 8;
 
 extern volatile uint32_t uwTick;
 static uint16_t BufferSize = BUFFER_SIZE;			// RF buffer size
@@ -206,7 +206,9 @@ void tri_mmwave(void)
 //	while(i < 1)
     { //delay 
         i = i+1;
-//        i = i+1;
+        i = i+1;
+        i = i+1;
+        i = i+1;
     }
 	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
 //    GPIOx->BRR = Pulse_Pin ;
@@ -909,6 +911,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //                while(i < 1)
                 { //delay 
                     i = i+1;
+                    i = i+1;
+                    i = i+1;
+                    i = i+1;
+
                 }
                 HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin,GPIO_PIN_RESET);
 //                GPIOx->BRR = Pulse_Pin ;
