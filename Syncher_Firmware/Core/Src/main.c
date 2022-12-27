@@ -188,6 +188,30 @@ void delayMsBySystick(uint32_t timeoutMs){
 	}
 }
 
+void MasterDelayMsAdd(void)
+{
+    MasterDelayMs++;
+}
+void MasterDelayMsMinus(void)
+{
+    if(MasterDelayMs > 0)
+    {
+        MasterDelayMs--;
+    }
+}
+
+bool GetMSMode(void)
+{
+    // M/S mode confirm: read GPIO value
+    // GPIO_PIN_SET -> op_mode true -> Master
+    return (GPIO_PIN_SET == HAL_GPIO_ReadPin(MS_Select_GPIO_Port, MS_Select_Pin));
+}
+
+void SetKeyLED(bool val)
+{
+    HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, val?GPIO_PIN_SET:GPIO_PIN_RESET);
+}
+
 void toggle_led(void)
 {
 	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
@@ -228,66 +252,45 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 
+void SendTrigPkg(void)
+{
+    u16 i=0; // for debug
+    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+    if(0==sx127xSend((uint8_t *)"t",strlen("t"),1000))
+    {   
+        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+//                toggle_led();
+    }else
+    {
+        i = 2;
+//              DEBUG("send timeout\r\n");
+    }
+
+    // trig pulse timer
+    delayMsBySystick(MasterDelayMs);
+    delay_us(MasterDelayUs);
+//    HAL_TIM_Base_Start_IT(&htim22);
+    tri_mmwave();
+}
+
 // 对按下的按键执行响应动作
 int Key_handle(uint32_t key)
 {
     static uint8_t prelist_cnt = 0;
     if(key == BTN1_Pin){
-//        txBuf1[0] = 't';
-//        txBuf1[1] = 'r';
-//        txBuf1[2] = 'i';
-//        txBuf1[3] = 'g';
+        SendTrigPkg();
 
-        {
-            u16 i=0;
-            HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-            if(0==sx127xSend((uint8_t *)"t",strlen("t"),1000))
-            {   
-                HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-//                toggle_led();
-        	}else
-            {
-        	    i = 2;
-//				DEBUG("send timeout\r\n");
-        	}
-        } 
-
-//      delay_0();
-
-        // trig pulse timer
-        delayMsBySystick(MasterDelayMs);
-        delay_us(MasterDelayUs);
-        tri_mmwave();
-//        HAL_TIM_Base_Start_IT(&htim22);
     }
     
     if(key == BTN2_Pin){
-        prelist_cnt++;
-        prelist_cnt %= sizeof(Prescal_list);
-        txBuf1[0] = 'c';
-        txBuf1[1] = prelist_cnt;
-        txBuf1[2] = pulse_max;
-        txBuf1[3] = 0x7A;
-//        Radio->SetTxPacket(txBuf1, 4);
-        
-        //��������֡
-//        pulse_max = 32;
-//        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
+//        MasterDelayMsAdd();
+//        MasterDelayMsMinus();
+
     }
         
     if(key == BTN3_Pin){
-        pulse_max = 32;
-        prelist_cnt--;
-        prelist_cnt %= sizeof(Prescal_list);
-        txBuf1[0] = 'c';
-        txBuf1[1] = prelist_cnt;
-        txBuf1[2] = pulse_max;
-        txBuf1[3] = 0x7A;
-//        Radio->SetTxPacket(txBuf1, 4);
-        
-        //��������֡
-//        pulse_max = 32;
-//        htim22.Init.Prescaler = Prescal_list[prelist_cnt];
+//        MasterDelayMsAdd();
+//        MasterDelayMsMinus();
         
     }
 
@@ -298,7 +301,7 @@ int Key_handle(uint32_t key)
 int Key_timer_cb(void)
 {  
     HAL_TIM_Base_Stop_IT(&htim2);
-    // 依次判断哪个按键按下�?
+    // 依次判断哪个按键按下
     if(0 == HAL_GPIO_ReadPin(BTN1_GPIO_Port, BTN1_Pin))
     {
 
@@ -328,43 +331,43 @@ int Key_timer_cb(void)
 
 void OnSlave( void )
 {
-	uint8_t rf_state = Radio->Process();
-	if(rf_state==RF_RX_DONE){
-		Radio->GetRxPacket( rxBuf, ( uint16_t* )&BufferSize );
-		//
-		if(rxBuf[0]=='t'){
-			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);//Usart send to server
-			toggle_led();
-            
-			HAL_TIM_Base_Stop_IT(&htim22);
-			HAL_TIM_Base_Start_IT(&htim22);
-//			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1,GPIO_PIN_RESET);
-		}else if(rxBuf[0] == 'c'){
-			pulse_max = txBuf1[2];
-			htim22.Init.Prescaler = Prescal_list[txBuf1[1]];
-		}
-		else if(rxBuf[0] == 'T'){
-			int i = 1;
-			
-            for(i=1;i < BufferSize;i++)
-            {
-                if(rxBuf[i]=='t')
+    u8 ret, rxCount=255;
+    while (1)
+    {
+        rxCount = 255;
+//      memset(rxBuf,0,LEN_RXBUF);
+        ret = sx127xRx(rxBuf,&rxCount,2000);    
+        switch(ret){
+            case 0:
+                toggle_led();
+                if((rxBuf[0]=='t') && (rxCount != 255))
                 {
-                    toggle_led();
-                    break;
+                    //HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
+//                  toggle_led();
+                    // Slaver 立即触发
+                    tri_mmwave();
                 }
-            }
-            
-		}
-		memset(rxBuf,0,BufferSize);
-	}
-	
+                
+                break;
+            case 1:
+            case 2:
+//                  DEBUG("rx timeout ret:%d\r\n",u8_ret);
+                break;
+            default:
+//                  DEBUG("unknow ret:%d\r\n",u8_ret);
+                break;
+        }
+    }
 }
 /*
  * Manages the master operation (board on the plane).
  */
 void OnMaster( void )
 {
+    while(1){};
+
+
+    
 	static uint32_t time_now;
 	static int master_state = TAG_READY;
 	uint32_t slot_time_100ms=1;
@@ -446,7 +449,7 @@ void OnMaster( void )
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	bool op_mode;
+	bool op_mode = false;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -483,57 +486,34 @@ int main(void)
     tLoRaSettings setting={435000000,20,7,12,1,0x0005};  
     g_Radio.Init(&setting);  
    
-	HAL_GPIO_WritePin(Pulse_GPIO_Port, Pulse_Pin, GPIO_PIN_RESET);
+    // M/S mode confirm: read GPIO value
+    // GPIO_PIN_SET -> op_mode == true -> Master
+    op_mode = GetMSMode();
 
-    // M/S mode confirm
-	if(GPIO_PIN_SET == HAL_GPIO_ReadPin(MS_Select_GPIO_Port, MS_Select_Pin)){
-		op_mode = 1; //master
-	}else{
-		op_mode = 0; //slave
+    // 按键灯标识主从
+    SetKeyLED(op_mode);
+
+    if(op_mode)
+   {
+        //master
+        OnMaster();
+	}
+    else
+    {
+		//slave
+        OnSlave();
 	}
 
-    // 按键标识主从，初始化
-    if(op_mode) // Master
-    {
-        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_SET);
-        while(1){};
-    }
-    else // Slaver
-    {
-        HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin, GPIO_PIN_RESET);
-    }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    u8 ret, rxCount=255;
     while (1)
     {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		rxCount = 255;
-//		memset(rxBuf,0,LEN_RXBUF);
-		ret = sx127xRx(rxBuf,&rxCount,2000);	
-		switch(ret){
-			case 0:
-                toggle_led();
-                if(rxBuf[0]=='t'){
-        			//HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
-//        			toggle_led();
-                    // Slaver 立即�?始触发电平控�?
-                    tri_mmwave();
-        		}
-                
-				break;
-			case 1:
-			case 2:
-//					DEBUG("rx timeout ret:%d\r\n",u8_ret);
-				break;
-			default:
-//					DEBUG("unknow ret:%d\r\n",u8_ret);
-				break;
-		}
+
     }
   /* USER CODE END 3 */
 }
