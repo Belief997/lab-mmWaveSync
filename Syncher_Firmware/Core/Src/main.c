@@ -35,21 +35,23 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+typedef enum master_state{
+    M_IDLE = 0,
+    M_TRIGGING,
+    M_DONE,
+}MASTER_STATE;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define BUFFER_SIZE                                 20 // Define the payload size here
-#define MAX_USER                                    5  
-#define TIME_GAP                                    1000 //ms
-#define TIME_WAIT									4 //s
-#define RX_TIMMER_SYNC                              2 // byte position of sync time 
-#define SENSOR_BYTE                                 7
-#define SENSOR_TIMEOUT								500 //ms
-#define MSG_TIMEOUT_CNT                             40000
-#define NOISE_THRE 									50 
-#define TIMER_CNT_BIT 								2500
-#define REPORT_CIRCLE                               10000
+
+// 选择是否自动循环触发
+//#define MODE_LOOP
+#define LOOP_TIME_MS 2000
+
+#define LEN_TXBUF 128
+#define LEN_RXBUF 128
 
 
 /* USER CODE END PD */
@@ -69,42 +71,20 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-enum cap_state{
-    CAPTURE_FALLING = 0,
-    CAPTURE_RISING,
-    CAPTURE_IDLE,
-	CAPTURE_READY,
-	CAPTURE_FIRSTCAP,
-	CAPTURE_FINISHED
-} ;
 
-enum tag_state{
-    TAG_READY = 0,
-    TAG_RECEIVE,
-    TAG_START,
-    TAG_SENDDING
-};
+MASTER_STATE MasterState = M_IDLE;
 
-enum master_state{
-    M_READY=0,
-    M_START,
-    M_RECEIVE,
-    M_SENDDING
-};
+
 
 extern __IO uint32_t uwTick;
 uint8_t pulse_cnt = 0;
 uint8_t pulse_max = 8;
 
 extern volatile uint32_t uwTick;
-static uint16_t BufferSize = BUFFER_SIZE;			// RF buffer size
-//static uint8_t Buffer[BUFFER_SIZE];					// RF buffer
-tRadioDriver *Radio = NULL;
 
 volatile uint8_t flag;//���ݽ����ı�־λ������ʱtag=1
 
-#define LEN_RXBUF 128
-u8 txBuf1[20];  //9.30
+u8 txBuf1[LEN_TXBUF];  
 u8 rxBuf[LEN_RXBUF];
 
 uint16_t Prescal_list[] = {500,1000,2000,5000,10000};
@@ -126,6 +106,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM22_Init(void);
 static void MX_TIM2_Init(void);
+
 /* USER CODE BEGIN PFP */
 int Key_timer_cb(void);
 
@@ -226,7 +207,7 @@ void tri_mmwave(void)
 //    GPIO_TypeDef * GPIOx = Pulse_GPIO_Port;
 //    GPIOx->BSRR = Pulse_Pin;
 
-    // 控制高电平时�?
+    // 控制高电平时间
 //	while(i < 1)
     { //delay 
         i = i+1;
@@ -254,16 +235,18 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 void SendTrigPkg(void)
 {
-    u16 i=0; // for debug
+//    u16 i=0; // for debug
+    
+    MasterState = M_TRIGGING;
     HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    if(0==sx127xSend((uint8_t *)"t",strlen("t"),1000))
+    if(0 == sx127xSend((uint8_t *)"t",strlen("t"),1000))
     {   
         HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-//                toggle_led();
+//        toggle_led();
     }else
     {
-        i = 2;
-//              DEBUG("send timeout\r\n");
+//        i = 2;
+//        DEBUG("send timeout\r\n");
     }
 
     // trig pulse timer
@@ -276,7 +259,7 @@ void SendTrigPkg(void)
 // 对按下的按键执行响应动作
 int Key_handle(uint32_t key)
 {
-    static uint8_t prelist_cnt = 0;
+//    static uint8_t prelist_cnt = 0;
     if(key == BTN1_Pin){
         SendTrigPkg();
 
@@ -342,10 +325,11 @@ void OnSlave( void )
                 toggle_led();
                 if((rxBuf[0]=='t') && (rxCount != 255))
                 {
-                    //HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
-//                  toggle_led();
                     // Slaver 立即触发
                     tri_mmwave();
+                    //HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf1, strlen(rxBuf1), 0xffff);
+//                  toggle_led();
+
                 }
                 
                 break;
@@ -364,80 +348,18 @@ void OnSlave( void )
  */
 void OnMaster( void )
 {
-    while(1){};
-
-
-    
-	static uint32_t time_now;
-	static int master_state = TAG_READY;
-	uint32_t slot_time_100ms=1;
-	uint8_t rf_state = Radio->Process();
-	
-    delay_0();
-    
-	switch (master_state)
+    while(1)
     {
-    case M_READY:
-      /* code */
-      //memset(start_buf, 0, BUFFER_SIZE);
-      master_state = M_START;
-	  //刚到，不�?要等
-      break;
-
-    case M_START: //发�?�同步帧
-		//sprintf(txBuf1, "T%d", TIME_WAIT);//(uwTick / 1000)%TIME_WAIT
-		//printf("start_buf : %s\r\n", start_buf);  //usart
-		//sprintf(txBuf1, "T%d", 1);//(uwTick / 1000)%TIME_WAIT
-		txBuf1[0] = 'T';
-//		txBuf1[1] = TIME_WAIT-1; //number of slot of a circle
-//		txBuf1[2] = slot_time_100ms; //one slot time = slot_time_100ms*100ms
-//		txBuf1[3] = '\r';
-//		txBuf1[4] = '\n';
-//		Radio->SetTxPacket(txBuf1, strlen(txBuf1));
-		master_state = M_SENDDING;
-		time_now = uwTick;
-			
-      break;
-	case M_SENDDING:
-		if(rf_state==RF_TX_DONE){
-			master_state = M_RECEIVE;
-//			Radio->StartRx();
-		}
-        else
+#ifdef MODE_LOOP
+        if(MasterState == M_DONE)
         {
-            delay_0();
-            delay_0();
-            delay_0();
-            delay_0();
+            MasterState = M_TRIGGING;
+            delayMsBySystick(LOOP_TIME_MS);
+            SendTrigPkg();
         }
-		break;
-    case M_RECEIVE:
-      //等待�?个周期并进行接收
-		
-      if (uwTick - time_now < TIME_WAIT * slot_time_100ms *100)
-      {
-        if(rf_state==RF_RX_DONE){
-			Radio->GetRxPacket( rxBuf, ( uint16_t* )&BufferSize );
-			//
-			if(rxBuf[0]>='0' && rxBuf[4]<='9'){
-				rxBuf[6] = '\r';
-				rxBuf[7] = '\n';
-				HAL_UART_Transmit(&huart1, (uint8_t *)rxBuf, strlen(rxBuf), 0xffff);//Usart send to server
-				toggle_led();
-			}
-			memset(rxBuf,0,BufferSize);
-		}
-		else{
-			master_state = M_RECEIVE;
-		}
-      }      
-	  else{
-		master_state = M_READY;
-	  }
-      break;
-    default:
-      break;
-    }
+#endif
+    };
+
 }
 
 /* USER CODE END 0 */
@@ -907,6 +829,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                 pulse_cnt = 0;
                 HAL_TIM_Base_Stop_IT(&htim22);
                 HAL_GPIO_WritePin(LED_KEY_GPIO_Port, LED_KEY_Pin,GPIO_PIN_SET);
+                MasterState = M_DONE;
             }
     	}
     else if(htim->Instance == TIM2)
