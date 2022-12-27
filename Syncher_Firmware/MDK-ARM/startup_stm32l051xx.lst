@@ -356,8 +356,8 @@ ARM Macro Assembler    Page 6
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=syncher_firmware\startup_stm32l051xx.d -osyncher_firmware\startup
-_stm32l051xx.o -I"F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Fir
-mware\lab-mmWaveSync\Syncher_Firmware\MDK-ARM\RTE" -IF:\other_software\MDK514\A
+_stm32l051xx.o -I"F:\OneDrive - alumni.hust.edu.cn\Paper_prj\mmWave\Syncher_Sof
+tware\lab-mmWaveSync\Syncher_Firmware\MDK-ARM\RTE" -IF:\other_software\MDK514\A
 RM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IF:\other_software\MDK514\ARM\PACK\Keil\
 STM32L0xx_DFP\2.1.0 --predefine="__UVISION_VERSION SETA 514" --predefine="_RTE_
  SETA 1" --predefine="STM32L051xx SETA 1" --list=startup_stm32l051xx.lst startu
